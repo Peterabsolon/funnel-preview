@@ -18,7 +18,6 @@ export const FunnelPreview = ({ funnel }: FunnelPreviewProps) => {
   const [device] = useState<FunnelPreviewDeviceType>('iPhone')
 
   const { name, pages } = funnel
-
   const funnelPage = pages[page]
 
   return (

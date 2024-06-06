@@ -14,7 +14,7 @@ export const Page = ({ title, children }: PageProps) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       </Head>
 
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">{children}</main>
+      <main className="p-24">{children}</main>
     </>
   )
 }
