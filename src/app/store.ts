@@ -2,7 +2,7 @@
 
 import { makeAutoObservable, observable } from 'mobx'
 
-import demoFunnelJson from '../demo.funnel.json'
+import funnelDemo from '../demo.funnel.json'
 
 import { FunnelStore } from '~/components'
 import { Funnel } from '~/types'
@@ -17,6 +17,10 @@ export class AppStore {
     makeAutoObservable(this)
   }
 
+  createFunnel = (funnel: Funnel) => {
+    this.funnels.push(new FunnelStore(funnel))
+  }
+
   /**
    * Loads and parses the JSON files.
    * Dropzone component already ensures we get .json files only.
@@ -28,8 +32,7 @@ export class AppStore {
       try {
         // TODO: Use Zod
         const data = JSON.parse(text)
-        const store = new FunnelStore(data)
-        this.funnels.push(store)
+        this.createFunnel(data)
       } catch (err) {
         // TODO: Notification
         console.warn('Failed to parse file')
@@ -38,9 +41,18 @@ export class AppStore {
     }
   }
 
+  /**
+   * Loads the demo funnel file
+   */
   useDemoFile = () => {
-    const funnel = new FunnelStore(demoFunnelJson as Funnel)
-    this.funnels.push(funnel)
+    this.createFunnel(funnelDemo as Funnel)
+  }
+
+  /**
+   * Resets all state
+   */
+  reset = () => {
+    this.funnels.clear()
   }
 }
 

@@ -21,8 +21,8 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 /** There is a way to get Tailwind Intellisense support somehow */
 const variants: { [key in ButtonVariant]: string } = {
-  primary: 'bg-blue-400 hover:bg-blue-500',
-  secondary: 'border border-blue-400 bg-slate-900',
+  primary: 'bg-blue-500 hover:bg-blue-400',
+  secondary: 'border border-blue-400 bg-slate-900 hover:bg-blue-400',
 }
 
 export const Button = observer(({ children, label, variant = 'primary', className, ...props }: ButtonProps) => {

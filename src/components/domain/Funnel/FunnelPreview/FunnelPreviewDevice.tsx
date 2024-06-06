@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import { observer } from 'mobx-react-lite'
+import cx from 'classnames'
 
 import { FunnelPreviewDeviceType } from '../Funnel.types'
 
@@ -24,15 +25,20 @@ const DEVICES: { [key in FunnelPreviewDeviceType]: FunnelPreviewDeviceData } = {
 }
 
 export interface FunnelPreviewDeviceProps {
-  device: FunnelPreviewDeviceType
+  bgColor?: string
   children: ReactNode
+  className?: string
+  device: FunnelPreviewDeviceType
 }
 
-export const FunnelPreviewDevice = observer(({ device, children }: FunnelPreviewDeviceProps) => {
+export const FunnelPreviewDevice = observer(({ bgColor, children, className, device }: FunnelPreviewDeviceProps) => {
   const { width, height } = DEVICES[device]
 
   return (
-    <div className="border rounded-lg" style={{ width, height }}>
+    <div
+      className={cx('border rounded-xl overflow-auto p-2', className)}
+      style={{ width, height, backgroundColor: bgColor }}
+    >
       {children}
     </div>
   )

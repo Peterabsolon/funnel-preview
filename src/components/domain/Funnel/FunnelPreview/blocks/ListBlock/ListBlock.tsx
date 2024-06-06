@@ -9,7 +9,7 @@ export const ListBlock = ({ block }: ListBlockProps) => {
   const { items } = block
 
   return (
-    <ul>
+    <ul className="mb-6">
       {items.map((item) => (
         <ListBlockItem key={item.id} item={item} />
       ))}

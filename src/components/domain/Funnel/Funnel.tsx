@@ -21,11 +21,11 @@ export const Funnel = observer(({ funnel }: FunnelProps) => {
           label="Drop JSON files here or click to select from drive"
           acceptFilesPreset="JSON"
           onDrop={(files) => console.log({ files })}
-          icon={<CodeBracketIcon className="text-slate-700 w-24 mb-4" />}
+          icon={<CodeBracketIcon className="text-slate-700 w-24 mb-6" />}
         />
       </Card>
     )
   }
 
-  return <FunnelPreview funnel={funnel.data} />
+  return <FunnelPreview funnel={funnel} />
 })

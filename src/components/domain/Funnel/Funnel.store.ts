@@ -29,15 +29,24 @@ export class FunnelStore {
    */
   deviceTheme: FunnelPreviewDeviceTheme = 'dark'
 
+  /**
+   * Which funnel page is being viewed
+   */
+  page = 0
+
   constructor(data?: Funnel) {
     makeAutoObservable(this)
     this.data = data
   }
 
   // ====================================================
-  // Computed
+  // Actions
   // ====================================================
   setData = (data: Funnel) => {
     this.data = data
+  }
+
+  setPage = (page: number) => {
+    this.page = page
   }
 }

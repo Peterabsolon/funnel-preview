@@ -5,7 +5,11 @@ export interface TextBlockProps {
 }
 
 export const TextBlock = ({ block }: TextBlockProps) => {
-  const { text } = block
+  const { text, color, align } = block
 
-  return <div>{text}</div>
+  return (
+    <p style={{ color, textAlign: align }} className="mb-8">
+      {text}
+    </p>
+  )
 }

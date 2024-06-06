@@ -49,5 +49,6 @@ export interface FunnelPage {
 
 export interface Funnel {
   name: string
+  bgColor?: string
   pages: FunnelPage[]
 }
