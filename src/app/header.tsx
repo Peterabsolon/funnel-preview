@@ -5,7 +5,7 @@ export const Header = () => {
     <header className="p-8 flex items-center justify-between">
       <div className="flex items-center">
         <Logo className="mr-4" />
-        <h3 className="font-medium">Funnel Preview</h3>
+        <h1 className="font-medium">Funnel Preview</h1>
       </div>
 
       <div className="flex gap-4">
