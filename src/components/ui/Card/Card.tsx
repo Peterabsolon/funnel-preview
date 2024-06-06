@@ -5,5 +5,5 @@ export interface CardProps {
 }
 
 export const Card = ({ children }: CardProps) => {
-  return <div className="rounded-sm">{children}</div>
+  return <div className="inset-shadow relative bg-slate-900 rounded-xl px-8 py-4">{children}</div>
 }

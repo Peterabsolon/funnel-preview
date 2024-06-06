@@ -15,15 +15,17 @@ export interface RootLayoutProps {
   children: ReactNode
 }
 
-export function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={font.className}>
-        <Header />
-        {children}
+        <div className="bg-slate-950">
+          <Header />
+          {children}
+        </div>
       </body>
     </html>
   )
 }
 
-export default RootLayout
+// export default RootLayout

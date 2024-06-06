@@ -14,6 +14,20 @@ const preview: Preview = {
   ],
 
   parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        {
+          name: 'dark',
+          value: '#020617', // bg-slate-950
+        },
+        // {
+        //   name: 'facebook',
+        //   value: '#3b5998',
+        // },
+      ],
+    },
+
     controls: {
       matchers: {
         color: /(background|color)$/i,
