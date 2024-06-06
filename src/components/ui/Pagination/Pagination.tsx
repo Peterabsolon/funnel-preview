@@ -1,3 +1,5 @@
+import { observer } from 'mobx-react-lite'
+
 import { Button } from '../Button'
 
 export interface PaginationProps {
@@ -17,7 +19,7 @@ export interface PaginationProps {
   setPage: (page: number) => void
 }
 
-export const Pagination = ({ page, pagesCount, setPage }: PaginationProps) => {
+export const Pagination = observer(({ page, pagesCount, setPage }: PaginationProps) => {
   const onPrevClick = () => {
     setPage(Math.max(0, page - 1))
   }
@@ -33,4 +35,4 @@ export const Pagination = ({ page, pagesCount, setPage }: PaginationProps) => {
       <Button onClick={onNextClick}>Next</Button>
     </div>
   )
-}
+})

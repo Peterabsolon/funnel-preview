@@ -1,5 +1,7 @@
 import { ReactNode } from 'react'
-import { FunnelPreviewDeviceType } from './FunnelPreview.types'
+import { observer } from 'mobx-react-lite'
+
+import { FunnelPreviewDeviceType } from '../Funnel.types'
 
 interface FunnelPreviewDeviceData {
   width: number
@@ -26,7 +28,7 @@ export interface FunnelPreviewDeviceProps {
   children: ReactNode
 }
 
-export const FunnelPreviewDevice = ({ device, children }: FunnelPreviewDeviceProps) => {
+export const FunnelPreviewDevice = observer(({ device, children }: FunnelPreviewDeviceProps) => {
   const { width, height } = DEVICES[device]
 
   return (
@@ -34,4 +36,4 @@ export const FunnelPreviewDevice = ({ device, children }: FunnelPreviewDevicePro
       {children}
     </div>
   )
-}
+})

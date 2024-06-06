@@ -1,11 +1,14 @@
+import { observer } from 'mobx-react-lite'
+
 import { FunnelPage } from '~/types'
+
 import { ButtonBlock, ImageBlock, ListBlock, TextBlock } from './blocks'
 
 export interface FunnelPreviewPageProps {
   page: FunnelPage
 }
 
-export const FunnelPreviewPage = ({ page }: FunnelPreviewPageProps) => {
+export const FunnelPreviewPage = observer(({ page }: FunnelPreviewPageProps) => {
   return (
     <div>
       {page.blocks.map((block) => {
@@ -28,4 +31,4 @@ export const FunnelPreviewPage = ({ page }: FunnelPreviewPageProps) => {
       })}
     </div>
   )
-}
+})

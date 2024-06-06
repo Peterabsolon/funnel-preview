@@ -1,23 +1,23 @@
 'use client'
 
-import { useState } from 'react'
+import { observer } from 'mobx-react-lite'
 
 import { Card } from '~/components/ui'
 import { Dropzone } from '~/components/fields'
 import { CodeBracketIcon } from '~/components/icons'
-import * as T from '~/types'
 
-import { FunnelPreview } from '../FunnelPreview'
+import { FunnelPreview } from './FunnelPreview'
+import { FunnelStore } from './Funnel.store'
 
-export interface FunnelProps {}
+export interface FunnelProps {
+  funnel: FunnelStore
+}
 
-export const Funnel = ({}: FunnelProps) => {
-  const [data] = useState<T.Funnel>()
-
+export const Funnel = observer(({ funnel }: FunnelProps) => {
   // localStorage...
   // const previouslyUploadedData: any[] = []
 
-  if (!data) {
+  if (!funnel.data) {
     return (
       <Card className="flex items-stretch w-full">
         <Dropzone
@@ -30,5 +30,5 @@ export const Funnel = ({}: FunnelProps) => {
     )
   }
 
-  return <FunnelPreview funnel={data} />
-}
+  return <FunnelPreview funnel={funnel.data} />
+})

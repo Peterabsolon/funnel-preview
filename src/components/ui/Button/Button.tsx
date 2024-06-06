@@ -2,6 +2,7 @@
 
 import { ButtonHTMLAttributes } from 'react'
 import cx from 'classnames'
+import { observer } from 'mobx-react-lite'
 
 export type ButtonVariant = 'primary' | 'secondary'
 
@@ -24,7 +25,7 @@ const variants: { [key in ButtonVariant]: string } = {
   secondary: 'bg-slate-900',
 }
 
-export const Button = ({ children, label, variant = 'primary', className, ...props }: ButtonProps) => {
+export const Button = observer(({ children, label, variant = 'primary', className, ...props }: ButtonProps) => {
   return (
     <button
       {...props}
@@ -37,4 +38,4 @@ export const Button = ({ children, label, variant = 'primary', className, ...pro
       {label || children}
     </button>
   )
-}
+})
