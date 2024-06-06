@@ -11,12 +11,15 @@
     "lint:fix": "next lint --fix",
     "lint:staged": "lint-staged",
     "test": "vitest",
+    "test:e2e": "npx playwright test",
+    "test:e2e:ui": "npx playwright test --ui",
+    "test:e2e:report": "npx playwright show-report",
     "ts:check": "./node_modules/.bin/tsc -p . --noEmit",
     "ts:watch": "./node_modules/.bin/tsc -p . --noEmit --watch",
     "prettier": "./node_modules/.bin/prettier --write 'src/**/*.{ts,tsx}'",
     "prettier:staged": "pretty-quick --staged",
     "check:style": "npm run prettier:staged && npm run lint:staged",
-    "check:health": "npm run check:style && npm run ts:check && npm run test"
+    "check:health": "npm run check:style && npm run ts:check && npm run test && npm run test:e2e"
   },
   "dependencies": {
     "next": "14.2.3",
@@ -24,6 +27,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.44.1",
     "@testing-library/react": "^16.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
