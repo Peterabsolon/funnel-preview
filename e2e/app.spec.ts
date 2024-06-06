@@ -9,5 +9,6 @@ test.beforeEach(async ({ page }) => {
 test.describe('app', () => {
   test('whatever', async ({ page }) => {
     await expect(page.getByText('Perspective.co')).toBeVisible();
+    await expect(page).toHaveScreenshot();
   });
 });
