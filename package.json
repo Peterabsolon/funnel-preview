@@ -9,11 +9,13 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
+    "lint:staged": "lint-staged",
     "test": "vitest",
     "ts:check": "./node_modules/.bin/tsc -p . --noEmit",
     "ts:watch": "./node_modules/.bin/tsc -p . --noEmit --watch",
     "prettier": "./node_modules/.bin/prettier --write 'src/**/*.{ts,tsx}'",
-    "check:style": "npm run prettier && npm run lint:fix",
+    "prettier:staged": "pretty-quick --staged",
+    "check:style": "npm run prettier:staged && npm run lint:staged",
     "check:health": "npm run check:style && npm run ts:check && npm run test"
   },
   "dependencies": {
@@ -31,8 +33,10 @@
     "eslint-config-next": "14.2.3",
     "husky": "^9.0.11",
     "jsdom": "^24.1.0",
+    "lint-staged": "^15.2.5",
     "postcss": "^8",
     "prettier": "^3.3.1",
+    "pretty-quick": "^4.0.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
     "vitest": "^1.6.0"
