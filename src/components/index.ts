@@ -1,12 +1,11 @@
 // Project/domain specific UI
-export * from './domain/Funnel'
-export * from './domain/FunnelPreview'
+export * from './domain'
 
 // Form fields
-export * from './fields/Dropzone'
+export * from './fields'
 
 // Application UI
-export * from './ui/Page'
-export * from './ui/Card'
-export * from './ui/Button'
-export * from './ui/Pagination'
+export * from './ui'
+
+// Icons
+export * from './icons'

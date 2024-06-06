@@ -1,16 +1,11 @@
-import { Funnel, Page } from '~/components'
+import { Funnel } from '~/components'
 
 export default function Home() {
   return (
-    <Page title="Funnel preview">
-      <main>
-        <div className="flex min-h-96 gap-5">
-          <Funnel />
-          <Funnel />
-          <Funnel />
-          <Funnel />
-        </div>
-      </main>
-    </Page>
+    <div className="flex flex-1 justify-center gap-8">
+      <div className="flex items-stretch w-full max-w-[520px]">
+        <Funnel />
+      </div>
+    </div>
   )
 }
