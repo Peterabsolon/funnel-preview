@@ -9,6 +9,7 @@
   "plugins": ["@typescript-eslint"],
 
   "rules": {
-    "@typescript-eslint/switch-exhaustiveness-check": "error"
+    "@typescript-eslint/switch-exhaustiveness-check": "error",
+    "@next/next/no-img-element": "off" // nice try NextJS sales team
   }
 }
