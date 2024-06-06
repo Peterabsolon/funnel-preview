@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "ts:check": "./node_modules/.bin/tsc -p . --noEmit",
-    "ts:watch": "./node_modules/.bin/tsc -p . --noEmit --watch"
+    "ts:watch": "./node_modules/.bin/tsc -p . --noEmit --watch",
+    "prettier": "./node_modules/.bin/prettier --write 'src/**/*.{ts,tsx}'"
   },
   "dependencies": {
     "react": "^18",
@@ -21,6 +22,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "postcss": "^8",
+    "prettier": "^3.3.1",
     "tailwindcss": "^3.4.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.3"
