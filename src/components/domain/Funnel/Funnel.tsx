@@ -22,7 +22,7 @@ export const Funnel = observer(({ funnel }: FunnelProps) => {
       <Card className="flex items-stretch w-full">
         <Dropzone
           label="Drop JSON files here or click to select from drive"
-          accept={{ 'application/json': ['.json'] }}
+          acceptFilesPreset="JSON"
           onDrop={(files) => console.log({ files })}
           icon={<CodeBracketIcon className="text-slate-700 w-24 mb-4" />}
         />

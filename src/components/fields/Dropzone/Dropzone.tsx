@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { DropzoneProps as RCDropzoneProps, useDropzone } from 'react-dropzone'
+import { Accept, DropzoneProps as RCDropzoneProps, useDropzone } from 'react-dropzone'
 import { observer } from 'mobx-react-lite'
 import cx from 'classnames'
 
@@ -10,7 +10,19 @@ import { Button } from '~/components/ui/Button'
 const DEFAULT_LABEL = 'Drag n drop some files here, or click to select files'
 const DEFAULT_BUTTON_LABEL = 'Select files'
 
+export type AcceptFilesPresets = 'JSON'
+
+// Let's just pass a key instead of having to remember this
+const ACCEPT_FILES_PRESETS: { [key in AcceptFilesPresets]: Accept } = {
+  JSON: { 'application/json': ['.json'] },
+}
+
 export interface DropzoneProps extends RCDropzoneProps {
+  /**
+   * Data format preset to accept
+   */
+  acceptFilesPreset?: AcceptFilesPresets
+
   /**
    * Root element className
    */
@@ -19,7 +31,7 @@ export interface DropzoneProps extends RCDropzoneProps {
   /**
    * Optional label
    */
-  label?: string
+  label?: string | null
 
   /**
    * Optional label
@@ -33,8 +45,20 @@ export interface DropzoneProps extends RCDropzoneProps {
 }
 
 export const Dropzone = observer(
-  ({ label = DEFAULT_LABEL, buttonLabel = DEFAULT_BUTTON_LABEL, icon, ...props }: DropzoneProps) => {
-    const { getRootProps, getInputProps, isDragActive } = useDropzone(props)
+  ({
+    acceptFilesPreset,
+    className,
+    label = DEFAULT_LABEL,
+    buttonLabel = DEFAULT_BUTTON_LABEL,
+    icon,
+    ...props
+  }: DropzoneProps) => {
+    const accept = props.accept ?? (acceptFilesPreset ? ACCEPT_FILES_PRESETS[acceptFilesPreset] : undefined)
+
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({
+      ...props,
+      accept,
+    })
 
     return (
       <div
@@ -42,6 +66,7 @@ export const Dropzone = observer(
           'border-dashed border-4 border-slate-800 rounded-xl',
           'flex items-stretch justify-stretch',
           'relative w-full p-10',
+          className,
         )}
         {...getRootProps()}
       >
