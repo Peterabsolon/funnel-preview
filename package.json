@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "test": "echo \"TODO\"",
+    "test": "vitest",
     "ts:check": "./node_modules/.bin/tsc -p . --noEmit",
     "ts:watch": "./node_modules/.bin/tsc -p . --noEmit --watch",
     "prettier": "./node_modules/.bin/prettier --write 'src/**/*.{ts,tsx}'",
@@ -18,19 +18,23 @@
   },
   "dependencies": {
     "next": "14.2.3",
-    "react": "^18",
-    "react-dom": "^18"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@testing-library/react": "^16.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@vitejs/plugin-react": "^4.3.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "husky": "^9.0.11",
+    "jsdom": "^24.1.0",
     "postcss": "^8",
     "prettier": "^3.3.1",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^1.6.0"
   }
 }
