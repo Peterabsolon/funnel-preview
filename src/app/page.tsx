@@ -1,11 +1,15 @@
-import { FunnelPreview, Page } from '~/components'
-import { FUNNEL_DATA_EXAMPLE } from '~/data.temp'
+import { Funnel, Page } from '~/components'
 
 export default function Home() {
   return (
     <Page title="Funnel preview">
       <main>
-        <FunnelPreview funnel={FUNNEL_DATA_EXAMPLE} />
+        <div className="flex min-h-96 gap-5">
+          <Funnel />
+          <Funnel />
+          <Funnel />
+          <Funnel />
+        </div>
       </main>
     </Page>
   )

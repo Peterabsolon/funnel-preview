@@ -14,7 +14,7 @@ export const Page = ({ title, children }: PageProps) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       </Head>
 
-      <main className="p-24">{children}</main>
+      <main className="px-8">{children}</main>
     </>
   )
 }

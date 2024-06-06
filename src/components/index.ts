@@ -1,4 +1,5 @@
 // Project/domain specific UI
+export * from './domain/Funnel'
 export * from './domain/FunnelPreview'
 
 // Form fields
