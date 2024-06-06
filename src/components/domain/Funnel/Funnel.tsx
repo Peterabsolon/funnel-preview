@@ -14,9 +14,6 @@ export interface FunnelProps {
 }
 
 export const Funnel = observer(({ funnel }: FunnelProps) => {
-  // localStorage...
-  // const previouslyUploadedData: any[] = []
-
   if (!funnel.data) {
     return (
       <Card className="flex items-stretch w-full">

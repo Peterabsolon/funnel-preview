@@ -1,8 +1,16 @@
+'use client'
+
 import { makeAutoObservable, observable } from 'mobx'
 
+import demoFunnelJson from '../demo.funnel.json'
+
 import { FunnelStore } from '~/components'
+import { Funnel } from '~/types'
 
 export class AppStore {
+  // ====================================================
+  // Model
+  // ====================================================
   funnels = observable<FunnelStore>([])
 
   constructor() {
@@ -14,16 +22,13 @@ export class AppStore {
    * Dropzone component already ensures we get .json files only.
    */
   loadFiles = async (files: File[]) => {
-    console.log({ files })
-
     for (const file of files) {
       const text = await file.text()
 
       try {
         // TODO: Use Zod
         const data = JSON.parse(text)
-        const store = new FunnelStore()
-        store.loadData(data)
+        const store = new FunnelStore(data)
         this.funnels.push(store)
       } catch (err) {
         // TODO: Notification
@@ -31,6 +36,11 @@ export class AppStore {
         continue
       }
     }
+  }
+
+  useDemoFile = () => {
+    const funnel = new FunnelStore(demoFunnelJson as Funnel)
+    this.funnels.push(funnel)
   }
 }
 

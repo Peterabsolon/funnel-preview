@@ -24,7 +24,7 @@ export const LandingModal = observer(() => {
 
         <span className="mb-4">Don&apos;t have a file?</span>
 
-        <Button className="w-full max-w-60" variant="secondary">
+        <Button onClick={app.useDemoFile} className="w-full max-w-60" variant="secondary">
           Use demo file
         </Button>
       </Card>
