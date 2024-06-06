@@ -1,12 +1,10 @@
 import { ReactNode } from 'react'
 
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 
-import './globals.css'
 import { Header } from './header'
-
-const inter = Inter({ subsets: ['latin'] })
+import { font } from './font'
+import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Funnel preview',
@@ -17,13 +15,15 @@ export interface RootLayoutProps {
   children: ReactNode
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={font.className}>
         <Header />
         {children}
       </body>
     </html>
   )
 }
+
+export default RootLayout
