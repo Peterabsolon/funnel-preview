@@ -1,3 +1,7 @@
+/**
+ * In ideal case these are generated from some backend schema like swagger.json or graphql.schema etc.
+ */
+
 export type TextBlockAlign = 'left' | 'center' | 'right'
 
 export interface TextBlock {
