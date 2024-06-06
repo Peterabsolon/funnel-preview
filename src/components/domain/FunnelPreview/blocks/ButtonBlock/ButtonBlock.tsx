@@ -7,5 +7,9 @@ export interface ButtonBlockProps {
 export const ButtonBlock = ({ block }: ButtonBlockProps) => {
   const { text } = block
 
-  return <div>ButtonBlock - {text}</div>
+  return (
+    <button type="button" onClick={() => console.log(`Button with text ${text} clicked`)}>
+      {text}
+    </button>
+  )
 }

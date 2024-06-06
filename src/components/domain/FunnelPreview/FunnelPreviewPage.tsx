@@ -1,5 +1,5 @@
 import { FunnelPage } from '~/types'
-import { ButtonBlock } from './blocks/ButtonBlock/ButtonBlock'
+import { ButtonBlock, ImageBlock, ListBlock, TextBlock } from './blocks'
 
 export interface FunnelPreviewPageProps {
   page: FunnelPage
@@ -14,13 +14,13 @@ export const FunnelPreviewPage = ({ page }: FunnelPreviewPageProps) => {
             return <ButtonBlock key={block.id} block={block} />
 
           case 'list':
-            return 'List block todo'
+            return <ListBlock key={block.id} block={block} />
 
           case 'image':
-            return 'Image block todo'
+            return <ImageBlock key={block.id} block={block} />
 
           case 'text':
-            return 'Text block todo'
+            return <TextBlock key={block.id} block={block} />
 
           default:
             return null
