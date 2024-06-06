@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "husky",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -12,7 +13,8 @@
     "ts:check": "./node_modules/.bin/tsc -p . --noEmit",
     "ts:watch": "./node_modules/.bin/tsc -p . --noEmit --watch",
     "prettier": "./node_modules/.bin/prettier --write 'src/**/*.{ts,tsx}'",
-    "health-check": "npm run prettier && npm run lint:fix && npm run ts:check && npm run test"
+    "check:style": "npm run prettier && npm run lint:fix",
+    "check:health": "npm run check:style && npm run ts:check && npm run test"
   },
   "dependencies": {
     "next": "14.2.3",
@@ -25,6 +27,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
+    "husky": "^9.0.11",
     "postcss": "^8",
     "prettier": "^3.3.1",
     "tailwindcss": "^3.4.1",
