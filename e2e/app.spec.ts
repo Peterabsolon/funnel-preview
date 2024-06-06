@@ -1,14 +1,13 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@playwright/test'
 
-const APP_URL = 'http://localhost:3000';
+// TODO: From .env so tests can be run on Github actions
+const APP_URL = 'http://localhost:3000'
 
-test.beforeEach(async ({ page }) => {
-  await page.goto(APP_URL);
-});
+test.beforeEach(async ({ page }) => page.goto(APP_URL))
 
 test.describe('app', () => {
   test('whatever', async ({ page }) => {
-    await expect(page.getByText('Perspective.co')).toBeVisible();
-    await expect(page).toHaveScreenshot();
-  });
-});
+    await expect(page.getByText('Perspective.co')).toBeVisible()
+    await expect(page).toHaveScreenshot()
+  })
+})

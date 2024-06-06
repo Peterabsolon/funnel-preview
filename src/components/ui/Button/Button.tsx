@@ -16,5 +16,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = ({ children, label, variant = 'primary', ...props }: ButtonProps) => {
+  console.log({ variant })
+
   return <button {...props}>{label || children}</button>
 }
