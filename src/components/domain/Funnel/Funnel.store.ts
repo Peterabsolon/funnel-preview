@@ -3,11 +3,11 @@ import { v4 as uuid } from 'uuid'
 
 import { Funnel } from '~/types'
 
-import { FunnelPreviewDeviceTheme, FunnelPreviewDeviceType } from './Funnel.types'
+import { DeviceTheme, DeviceType } from './Funnel.types'
 
 export class FunnelStore {
   // ====================================================
-  // Model
+  // State
   // ====================================================
   /**
    * ID to use for React render key
@@ -22,12 +22,12 @@ export class FunnelStore {
   /**
    * The device shell to render the Funnel in
    */
-  device: FunnelPreviewDeviceType = 'iPhone'
+  device: DeviceType = 'iPhone14Pro'
 
   /**
    * The color theme to render the device UI in
    */
-  deviceTheme: FunnelPreviewDeviceTheme = 'dark'
+  deviceTheme: DeviceTheme = 'dark'
 
   /**
    * Which Funnel page is being viewed
@@ -47,5 +47,5 @@ export class FunnelStore {
   // ====================================================
   setData = (data: Funnel) => (this.data = data)
   setPage = (page: number) => (this.page = page)
-  setDevice = (device: FunnelPreviewDeviceType) => (this.device = device)
+  setDevice = (device: DeviceType) => (this.device = device)
 }

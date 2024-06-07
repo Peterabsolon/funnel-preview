@@ -6,9 +6,14 @@ import { observer } from 'mobx-react-lite'
 import cx from 'classnames'
 
 import { Button } from '~/components/ui/Button'
-import { CodeBracketIcon } from '~/components/icons'
+import { JSONIcon } from '~/components/icons'
 
-const DEFAULT_LABEL = 'Drag n drop some files here, or click to select files'
+const DEFAULT_LABEL = (
+  <>
+    Drag n drop some files here, <br /> or click anywhere to select files
+  </>
+)
+
 const DEFAULT_BUTTON_LABEL = 'Select files'
 
 export type AcceptFilesPresets = 'JSON'
@@ -19,7 +24,7 @@ const ACCEPT_FILES_PRESETS: { [key in AcceptFilesPresets]: Accept } = {
 }
 
 const DEFAULT_ICON: { [key in AcceptFilesPresets]: ReactNode } = {
-  JSON: <CodeBracketIcon className="text-slate-700 w-24 mb-4" />,
+  JSON: <JSONIcon className="text-slate-700 w-24 h-24 mb-12" />,
 }
 
 export interface DropzoneProps extends RCDropzoneProps {
@@ -36,7 +41,7 @@ export interface DropzoneProps extends RCDropzoneProps {
   /**
    * Optional label
    */
-  label?: string | null
+  label?: ReactNode
 
   /**
    * Optional label
@@ -82,7 +87,7 @@ export const Dropzone = observer(
 
           {icon && icon}
 
-          <p className="text-center mb-6">{isDragActive ? 'Drop the file here' : label}</p>
+          <p className="text-center mb-12">{isDragActive ? 'Drop the file here' : label}</p>
 
           <Button className="w-full max-w-60">{buttonLabel}</Button>
         </div>

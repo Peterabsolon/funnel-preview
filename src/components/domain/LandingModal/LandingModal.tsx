@@ -1,24 +1,24 @@
 import { observer } from 'mobx-react-lite'
 
 import { Button, Card } from '~/components/ui'
-
-import { Logo } from '../Logo'
 import { Dropzone } from '~/components/fields'
 import { app } from '~/app/store'
+
+import { Logo } from '../Logo'
 
 export const LandingModal = observer(() => {
   return (
     <div className="flex flex-1 items-center justify-center">
-      <Card className="flex flex-col items-center self-center w-full max-w-[600px]">
+      <Card className="flex flex-col items-center self-center w-full max-w-[640px]">
         <div className="flex items-center mb-8">
-          <h1 className="mr-4">Welcome to</h1>
-          <Logo />
+          <h1 className="mr-4 font-medium">Welcome to</h1>
+          <Logo withText />
         </div>
 
         <Dropzone
           acceptFilesPreset="JSON"
           className="mb-8"
-          label="Start by dropping JSON files here, or click to select files"
+          label="Drop JSON files here or use the button below to select files"
           onDrop={(files) => app.loadFiles(files)}
         />
 
