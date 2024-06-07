@@ -15,14 +15,14 @@ export class FunnelStore {
   id = uuid()
 
   /**
-   * The funnel data to preview
+   * The Funnel data to preview
    */
   data: Funnel | undefined = undefined
 
   /**
-   * The device shell to render the funnel in
+   * The device shell to render the Funnel in
    */
-  deviceType: FunnelPreviewDeviceType = 'iPhone'
+  device: FunnelPreviewDeviceType = 'iPhone'
 
   /**
    * The color theme to render the device UI in
@@ -30,10 +30,13 @@ export class FunnelStore {
   deviceTheme: FunnelPreviewDeviceTheme = 'dark'
 
   /**
-   * Which funnel page is being viewed
+   * Which Funnel page is being viewed
    */
   page = 0
 
+  // ====================================================
+  // Constructor
+  // ====================================================
   constructor(data?: Funnel) {
     makeAutoObservable(this)
     this.data = data
@@ -42,11 +45,7 @@ export class FunnelStore {
   // ====================================================
   // Actions
   // ====================================================
-  setData = (data: Funnel) => {
-    this.data = data
-  }
-
-  setPage = (page: number) => {
-    this.page = page
-  }
+  setData = (data: Funnel) => (this.data = data)
+  setPage = (page: number) => (this.page = page)
+  setDevice = (device: FunnelPreviewDeviceType) => (this.device = device)
 }

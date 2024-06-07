@@ -14,22 +14,18 @@ export interface FunnelPreviewProps {
 }
 
 export const FunnelPreview = observer(({ funnel }: FunnelPreviewProps) => {
-  if (!funnel.data) {
-    return null
-  }
+  const { device, page, setPage } = funnel
+  const { name, pages = [], bgColor } = funnel.data ?? {}
 
-  const { deviceType, page, setPage } = funnel
-  const { name, pages, bgColor } = funnel.data
-
-  const funnelPage = pages[page]
+  const pageToView = pages[page]
 
   return (
     <div>
       <h2 className="my-8 text-xl">{name}</h2>
 
-      {funnelPage && (
-        <FunnelPreviewDevice bgColor={bgColor} className="mb-6" device={deviceType}>
-          <FunnelPreviewPage page={funnelPage} />
+      {pageToView && (
+        <FunnelPreviewDevice bgColor={bgColor} className="mb-6" device={device}>
+          <FunnelPreviewPage page={pageToView} />
         </FunnelPreviewDevice>
       )}
 
