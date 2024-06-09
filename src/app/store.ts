@@ -3,7 +3,7 @@
 import { makeAutoObservable, observable } from 'mobx'
 
 import { FunnelStore } from '~/components'
-import { Funnel } from '~/types'
+import { FunnelSchema } from '~/types'
 
 import funnelDemo from '../../fixtures/demo.funnel.json'
 
@@ -20,8 +20,19 @@ export class AppStore {
     makeAutoObservable(this)
   }
 
-  createFunnel = (funnel: Funnel) => {
-    this.funnels.push(new FunnelStore(funnel))
+  /**
+   * Parses funnel data and initializes its store
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  createFunnel = (data: any) => {
+    try {
+      const funnel = FunnelSchema.parse(data)
+      this.funnels.push(new FunnelStore(funnel))
+    } catch (err) {
+      // TODO: Notifications
+      console.error('Failed to parse data', err)
+      alert('Failed to parse data. Check the console for more details')
+    }
   }
 
   /**
@@ -48,7 +59,7 @@ export class AppStore {
    * Loads the demo funnel file.
    */
   useDemoFile = () => {
-    this.createFunnel(funnelDemo as Funnel)
+    this.createFunnel(funnelDemo)
   }
 
   /**
