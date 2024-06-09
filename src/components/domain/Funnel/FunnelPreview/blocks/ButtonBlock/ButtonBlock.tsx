@@ -9,7 +9,7 @@ export const ButtonBlock = ({ block }: ButtonBlockProps) => {
 
   return (
     <button
-      className="rounded-md py-4 px-10 mx-auto block mb-6"
+      className="mx-auto mb-6 block rounded-md px-10 py-4"
       style={{ backgroundColor: bgColor, color }}
       type="button"
       onClick={() => console.log(`Button with text ${text} clicked`)}

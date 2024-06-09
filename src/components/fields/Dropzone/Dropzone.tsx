@@ -24,7 +24,7 @@ const ACCEPT_FILES_PRESETS: { [key in AcceptFilesPresets]: Accept } = {
 }
 
 const DEFAULT_ICON: { [key in AcceptFilesPresets]: ReactNode } = {
-  JSON: <JSONIcon className="text-slate-700 w-24 h-24 mb-12" />,
+  JSON: <JSONIcon className="mb-12 h-24 w-24 text-slate-700" />,
 }
 
 export interface DropzoneProps extends RCDropzoneProps {
@@ -73,21 +73,21 @@ export const Dropzone = observer(
     return (
       <div
         className={cx(
-          'border-dashed border-4 border-slate-800 rounded-xl',
+          'rounded-xl border-4 border-dashed border-slate-800',
           'flex items-stretch justify-stretch',
           'relative w-full p-10',
           className,
         )}
         {...getRootProps()}
       >
-        {isDragActive && <div className="absolute inset-0 bg-blue-400 opacity-20 z-10" />}
+        {isDragActive && <div className="absolute inset-0 z-10 bg-blue-400 opacity-20" />}
 
-        <div className="z-20 flex flex-col items-center justify-center w-full">
+        <div className="z-20 flex w-full flex-col items-center justify-center">
           <input {...getInputProps()} />
 
           {icon && icon}
 
-          <p className="text-center mb-12">{isDragActive ? 'Drop the file here' : label}</p>
+          <p className="mb-12 text-center">{isDragActive ? 'Drop the file here' : label}</p>
 
           <Button className="w-full max-w-60">{buttonLabel}</Button>
         </div>

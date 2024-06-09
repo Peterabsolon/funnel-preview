@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* TODO: Themes?... */
-
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -33,7 +31,8 @@
 body,
 html {
   color: rgb(var(--foreground-rgb));
-  background: '#020617'; /* bg-slate-950; TODO: use @apply, had issues */
+  /* bg-slate-950; TODO: use @apply */
+  background: '#020617';
   min-height: 100vh;
 }
 

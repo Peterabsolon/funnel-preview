@@ -16,7 +16,7 @@ export interface CardProps {
 
 export const Card = observer(({ children, className }: CardProps) => {
   return (
-    <div className={cx('emboss-effect drop-shadow-2xl relative bg-slate-900 rounded-xl p-8', className)}>
+    <div className={cx('emboss-effect relative rounded-xl bg-slate-900 p-8 drop-shadow-2xl', className)}>
       {children}
     </div>
   )

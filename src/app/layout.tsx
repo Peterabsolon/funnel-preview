@@ -19,9 +19,9 @@ export interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={`${font.className} bg-slate-950 flex flex-col items-stretch justify-stretch`}>
+      <body className={`${font.className} flex flex-col items-stretch justify-stretch bg-slate-950`}>
         <Header />
-        <main className="flex flex-1 px-8 items-stretch justify-center overflow-auto">{children}</main>
+        <main className="flex flex-1 items-stretch justify-center overflow-auto px-8">{children}</main>
         <Footer />
       </body>
     </html>

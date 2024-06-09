@@ -30,7 +30,7 @@ export const Button = observer(({ children, label, variant = 'primary', classNam
   <button
     {...props}
     className={cx(
-      'relative px-8 py-2 rounded-md font-medium drop-shadow-2xl emboss-effect transition-colors',
+      'emboss-effect relative rounded-md px-8 py-2 font-medium drop-shadow-2xl transition-colors',
       variants[variant],
       className,
     )}

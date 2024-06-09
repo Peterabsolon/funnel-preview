@@ -49,7 +49,7 @@ export const FunnelPreviewDevice = observer(({ bgColor, children, className, ...
 
       {/* Viewport */}
       <div
-        className={cx('border rounded-xl overflow-auto p-2', className)}
+        className={cx('overflow-auto rounded-xl border p-2', className)}
         style={{
           backgroundColor: bgColor,
           position: 'absolute',

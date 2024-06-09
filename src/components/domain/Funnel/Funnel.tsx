@@ -15,7 +15,7 @@ export interface FunnelProps {
 export const Funnel = observer(({ funnel }: FunnelProps) => {
   if (!funnel.data) {
     return (
-      <Card className="flex items-stretch w-full">
+      <Card className="flex w-full items-stretch">
         <Dropzone
           label={
             <p>

@@ -12,7 +12,7 @@ export const Header = observer(() => {
   }
 
   return (
-    <header className="p-8 flex items-center justify-between border-b border-b-slate-800">
+    <header className="flex items-center justify-between border-b border-b-slate-800 p-8">
       <div className="flex items-center">
         <Logo withText />
       </div>

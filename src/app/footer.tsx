@@ -1,3 +1,3 @@
 export const Footer = () => {
-  return <footer className="text-right p-8 border-t border-t-slate-800">Made with 💙 by Peter Absolon</footer>
+  return <footer className="border-t border-t-slate-800 p-8 text-right">Made with 💙 by Peter Absolon</footer>
 }
