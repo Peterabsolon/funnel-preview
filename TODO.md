@@ -1,17 +1,29 @@
 # TODO
 
-- Center landing page logo
+## v1
+
 - Sort imports lint rule, save time
-- Device frame
-- Generate fake URL
-- Appear effect
 - Use ZOD to parse data
-- Show previously uploaded files, store in localStorage
-- Mobile
 - E2E
-- Basic unit, integration test
 - Screenshot tests
-- Favicon
+- Basic unit, integration test
+- Center landing page logo
+- Browser frame
+- Device frame
+- Control panel
 - Check all browsers
-- Mobile version
 - Test with varied data, (one list item without image, invalid colors (strings but not hex) etc)
+
+## v2
+
+- Comparisons
+- Appear effect
+
+## V3
+
+- Show previously uploaded files, store in localStorage
+
+## v4
+
+- Mobile
+- Generate fake URL (for Apple devices only because of SF font)

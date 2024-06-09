@@ -1,6 +1,6 @@
-import { ReactNode } from 'react'
-import { observer } from 'mobx-react-lite'
 import cx from 'classnames'
+import { observer } from 'mobx-react-lite'
+import { ReactNode } from 'react'
 
 export interface CardProps {
   /**

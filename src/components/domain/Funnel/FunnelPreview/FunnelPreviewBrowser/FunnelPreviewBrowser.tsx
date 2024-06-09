@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+
 import { BrowserTheme, BrowserType } from '../../Funnel.types'
 
 interface FunnelPreviewBrowserData {

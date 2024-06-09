@@ -2,10 +2,10 @@
 
 import { makeAutoObservable, observable } from 'mobx'
 
-import funnelDemo from '../../fixtures/demo.funnel.json'
-
 import { FunnelStore } from '~/components'
 import { Funnel } from '~/types'
+
+import funnelDemo from '../../fixtures/demo.funnel.json'
 
 export class AppStore {
   // ====================================================

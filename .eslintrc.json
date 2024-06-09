@@ -1,15 +1,28 @@
 {
   "extends": ["next/core-web-vitals", "prettier", "plugin:@typescript-eslint/recommended"],
 
+  "plugins": ["@typescript-eslint", "simple-import-sort"],
+
   "parser": "@typescript-eslint/parser",
+
   "parserOptions": {
+    // These are needed for simple-import-sort
+    "sourceType": "module",
+    "ecmaVersion": "latest",
+
+    // This is needed for switch-exhaustiveness-check
     "project": "./tsconfig.json"
   },
 
-  "plugins": ["@typescript-eslint"],
-
   "rules": {
+    /**
+     * Auto sort imports into groups based on their origin (packages, then ~/src imports, then relative)
+     */
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+
     "@typescript-eslint/switch-exhaustiveness-check": "error",
+
     "@next/next/no-img-element": "off" // nice try NextJS sales team
   }
 }

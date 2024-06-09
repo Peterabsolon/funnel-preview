@@ -1,11 +1,11 @@
-import { ReactNode } from 'react'
+import './globals.css'
 
 import type { Metadata } from 'next'
+import { ReactNode } from 'react'
 
 import { font } from './font'
 import { Footer } from './footer'
 import { Header } from './header'
-import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Funnel preview',

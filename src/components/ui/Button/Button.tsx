@@ -1,8 +1,8 @@
 'use client'
 
-import { ButtonHTMLAttributes } from 'react'
 import cx from 'classnames'
 import { observer } from 'mobx-react-lite'
+import { ButtonHTMLAttributes } from 'react'
 
 export type ButtonVariant = 'primary' | 'secondary'
 

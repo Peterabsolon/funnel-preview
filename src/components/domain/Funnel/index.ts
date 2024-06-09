@@ -1,2 +1,2 @@
-export * from './Funnel.store'
 export * from './Funnel'
+export * from './Funnel.store'

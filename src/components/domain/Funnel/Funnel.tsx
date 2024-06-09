@@ -2,11 +2,11 @@
 
 import { observer } from 'mobx-react-lite'
 
-import { Card } from '~/components/ui'
 import { Dropzone } from '~/components/fields'
+import { Card } from '~/components/ui'
 
-import { FunnelPreview } from './FunnelPreview'
 import { FunnelStore } from './Funnel.store'
+import { FunnelPreview } from './FunnelPreview'
 
 export interface FunnelProps {
   funnel: FunnelStore

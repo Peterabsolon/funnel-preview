@@ -1,12 +1,12 @@
 'use client'
 
+import cx from 'classnames'
+import { observer } from 'mobx-react-lite'
 import { ReactNode } from 'react'
 import { Accept, DropzoneProps as RCDropzoneProps, useDropzone } from 'react-dropzone'
-import { observer } from 'mobx-react-lite'
-import cx from 'classnames'
 
-import { Button } from '~/components/ui/Button'
 import { JSONIcon } from '~/components/icons'
+import { Button } from '~/components/ui/Button'
 
 const DEFAULT_LABEL = (
   <>

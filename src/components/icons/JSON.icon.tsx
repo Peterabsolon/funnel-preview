@@ -1,6 +1,6 @@
-import cx from 'classnames'
-
 import './JSON.icon.css'
+
+import cx from 'classnames'
 
 interface IconProps {
   className?: string

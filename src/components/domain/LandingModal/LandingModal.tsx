@@ -1,8 +1,8 @@
 import { observer } from 'mobx-react-lite'
 
-import { Button, Card } from '~/components/ui'
-import { Dropzone } from '~/components/fields'
 import { app } from '~/app/store'
+import { Dropzone } from '~/components/fields'
+import { Button, Card } from '~/components/ui'
 
 import { Logo } from '../Logo'
 

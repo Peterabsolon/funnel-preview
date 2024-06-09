@@ -5,9 +5,8 @@ import { observer } from 'mobx-react-lite'
 import { Pagination } from '~/components/ui/Pagination'
 
 import { FunnelStore } from '../Funnel.store'
-
-import { FunnelPreviewPage } from './FunnelPreviewPage'
 import { FunnelPreviewDevice } from './FunnelPreviewDevice'
+import { FunnelPreviewPage } from './FunnelPreviewPage'
 
 export interface FunnelPreviewProps {
   funnel: FunnelStore
