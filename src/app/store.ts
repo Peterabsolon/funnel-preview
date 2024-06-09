@@ -14,6 +14,7 @@ export class AppStore {
   // Model
   // ====================================================
   funnels = observable<FunnelStore>([])
+  // error?: ParseError = undefined
   // theme: AppTheme = 'dark'
 
   constructor() {
@@ -21,17 +22,16 @@ export class AppStore {
   }
 
   /**
-   * Parses funnel data and initializes its store
+   * Parses funnel data and initializes its store.
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  createFunnel = (data: any) => {
+  private createFunnel = (data: AnyObject) => {
     try {
       const funnel = FunnelSchema.parse(data)
       this.funnels.push(new FunnelStore(funnel))
     } catch (err) {
       // TODO: Notifications
-      console.error('Failed to parse data', err)
-      alert('Failed to parse data. Check the console for more details')
+      console.error('Failed to parse funnel data', err)
+      alert('Failed to parse funnel data. Check the console for more details')
     }
   }
 
@@ -41,16 +41,15 @@ export class AppStore {
    */
   loadFiles = async (files: File[]) => {
     for (const file of files) {
+      console.log('file.text', file.text)
+
       const text = await file.text()
 
       try {
-        // TODO: Use Zod
         const data = JSON.parse(text)
-        this.createFunnel(data)
+        this.createFunnel(data as AnyObject)
       } catch (err) {
-        // TODO: Notification
-        console.warn('Failed to parse file')
-        continue
+        console.error('Failed to parse JSON file', err)
       }
     }
   }

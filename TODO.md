@@ -2,9 +2,7 @@
 
 ## v1
 
-- Screenshot tests
 - Basic unit, integration test
-- Center landing page logo
 - Browser frame
 - Device frame
 - Control panel
