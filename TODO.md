@@ -2,15 +2,16 @@
 
 ## v1
 
-- Basic unit, integration test
 - Browser frame
 - Device frame
 - Control panel
 - Check all browsers
 - Test with varied data, (one list item without image, invalid colors (strings but not hex) etc)
+- Hides scrollbar
 
 ## v2
 
+- Android
 - Comparisons
 - Canvas controls - e.g. scale devices to actual size or to fill viewport height
 - Appear effect
@@ -20,6 +21,7 @@
 
 - Show previously uploaded files, store in localStorage
 - Parse HEX colors
+- Basic unit, integration test
 
 ## v4
 

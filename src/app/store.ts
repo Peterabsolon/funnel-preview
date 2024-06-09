@@ -14,7 +14,6 @@ export class AppStore {
   // Model
   // ====================================================
   funnels = observable<FunnelStore>([])
-  // error?: ParseError = undefined
   // theme: AppTheme = 'dark'
 
   constructor() {
@@ -41,8 +40,6 @@ export class AppStore {
    */
   loadFiles = async (files: File[]) => {
     for (const file of files) {
-      console.log('file.text', file.text)
-
       const text = await file.text()
 
       try {

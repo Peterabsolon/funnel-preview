@@ -26,6 +26,16 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /** Util to hide scrollbar in. Used for preview devices to look more real */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }
 
 body,
