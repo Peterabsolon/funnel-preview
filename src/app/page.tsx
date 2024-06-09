@@ -1,5 +1,6 @@
 'use client'
 
+import cx from 'classnames'
 import { observer } from 'mobx-react-lite'
 
 import { FunnelPreview, FunnelPreviewSettings, LandingModal } from '~/components'
@@ -16,12 +17,20 @@ const App = observer(() => {
   return (
     <div className="flex flex-1 items-start justify-between gap-8">
       {app.funnels.map((funnel) => (
-        <div key={funnel.id} className="flex w-full max-w-[520px] flex-1 items-stretch">
+        <div
+          key={funnel.id}
+          className={cx(
+            'flex w-full flex-1 items-start justify-center',
+            // Center preview device relative to viewport on larger devices
+            `2xl:pl-[${SIDEBAR_WIDTH}px]`,
+          )}
+        >
           <FunnelPreview funnel={funnel} />
         </div>
       ))}
 
       <div style={{ width: SIDEBAR_WIDTH }} className="py-6">
+        {/* TODO: Use "selectedFunnel" prop that is also TODO :)  */}
         {app.funnels[0] && <FunnelPreviewSettings funnel={app.funnels[0]} />}
       </div>
     </div>

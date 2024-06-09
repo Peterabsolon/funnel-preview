@@ -24,10 +24,10 @@ export interface ToggleProps extends InputHTMLAttributes<HTMLInputElement> {
   checked?: boolean
 }
 
-export const Toggle = ({ label, labelOff, labelOn, checked, onChange }: ToggleProps) => {
+export const Toggle = ({ label, labelOff, labelOn, checked, onChange, className, ...rest }: ToggleProps) => {
   return (
-    <label className="inline-flex cursor-pointer items-center">
-      <input type="checkbox" checked={checked} onChange={onChange} className="peer sr-only" />
+    <label className={cx('inline-flex cursor-pointer items-center', className)}>
+      <input type="checkbox" checked={checked} onChange={onChange} className="peer sr-only" {...rest} />
 
       {labelOff}
 
@@ -41,7 +41,7 @@ export const Toggle = ({ label, labelOff, labelOn, checked, onChange }: TogglePr
 
       {labelOn && <span className="ml-2">{labelOn}</span>}
 
-      <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">{label}</span>
+      <span className="ms-3 text-sm font-medium">{label}</span>
     </label>
   )
 }

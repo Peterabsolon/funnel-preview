@@ -7,17 +7,30 @@ import { FunnelSchema } from '~/types'
 
 import funnelDemo from '../../fixtures/demo.funnel.json'
 
-// export type AppTheme = 'light' | 'dark'
+const PARSING_ERROR = ['file', 'schema'] as const
+type parsingError = (typeof PARSING_ERROR)[number]
+
+const PARSING_ERROR_MESSAGES: { [key in parsingError]: string } = {
+  file: 'Failed to parse file as JSON.',
+  schema: 'The provided JSON file has invalid data shape.',
+}
 
 export class AppStore {
   // ====================================================
   // Model
   // ====================================================
   funnels = observable<FunnelStore>([])
-  // theme: AppTheme = 'dark'
+  parsingError?: parsingError = undefined
 
   constructor() {
     makeAutoObservable(this)
+  }
+
+  // ====================================================
+  // Computed
+  // ====================================================
+  get parsingErrorMessage() {
+    return this.parsingError ? PARSING_ERROR_MESSAGES[this.parsingError] : undefined
   }
 
   /**
@@ -28,17 +41,18 @@ export class AppStore {
       const funnel = FunnelSchema.parse(data)
       this.funnels.push(new FunnelStore(funnel))
     } catch (err) {
-      // TODO: Notifications
       console.error('Failed to parse funnel data', err)
-      alert('Failed to parse funnel data. Check the console for more details')
+      this.parsingError = 'schema'
     }
   }
 
   /**
-   * Loads and parses the JSON files.
+   * Loads and parses the JSON file.
    * Dropzone component already ensures we get .json files only.
    */
   loadFiles = async (files: File[]) => {
+    this.reset()
+
     for (const file of files) {
       const text = await file.text()
 
@@ -47,6 +61,7 @@ export class AppStore {
         this.createFunnel(data as AnyObject)
       } catch (err) {
         console.error('Failed to parse JSON file', err)
+        this.parsingError = 'file'
       }
     }
   }
@@ -63,6 +78,7 @@ export class AppStore {
    */
   reset = () => {
     this.funnels.clear()
+    this.parsingError = undefined
   }
 }
 

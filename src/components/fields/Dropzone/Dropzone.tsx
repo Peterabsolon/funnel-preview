@@ -53,6 +53,11 @@ export interface DropzoneProps extends RCDropzoneProps {
    * Optional, large icon in the middle
    */
   icon?: ReactNode
+
+  /**
+   * Should icon be hidden?
+   */
+  iconHidden?: boolean
 }
 
 export const Dropzone = observer(
@@ -61,12 +66,13 @@ export const Dropzone = observer(
     className,
     label = DEFAULT_LABEL,
     buttonLabel = DEFAULT_BUTTON_LABEL,
+    iconHidden,
     ...props
   }: DropzoneProps) => {
     const accept = props.accept ?? (acceptFilesPreset ? ACCEPT_FILES_PRESETS[acceptFilesPreset] : undefined)
     const icon = props.icon ?? (acceptFilesPreset ? DEFAULT_ICON[acceptFilesPreset] : undefined)
 
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    const { getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject } = useDropzone({
       ...props,
       /**
        * Needed so we can test file upload properly with Playwright
@@ -86,14 +92,23 @@ export const Dropzone = observer(
         )}
         {...getRootProps()}
       >
-        {isDragActive && <div className="absolute inset-0 z-10 bg-blue-400 opacity-20" />}
+        {isDragActive && (
+          <div
+            className={cx('absolute inset-0 z-10 rounded-xl', {
+              'bg-green-600': isDragAccept,
+              'bg-red-700': isDragReject,
+            })}
+          />
+        )}
 
         <div className="z-20 flex w-full flex-col items-center justify-center" data-testid="dropzone">
           <input {...getInputProps()} />
 
-          {icon && icon}
+          {icon && !iconHidden && icon}
 
-          <p className="mb-12 text-center">{isDragActive ? 'Drop the file here' : label}</p>
+          <p className="mb-12 text-center">
+            {isDragActive ? (isDragAccept ? 'Drop the file here' : 'This file is not supported :(') : label}
+          </p>
 
           <Button id="omg" className="w-full max-w-60">
             {buttonLabel}

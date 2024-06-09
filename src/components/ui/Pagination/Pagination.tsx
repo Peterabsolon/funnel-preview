@@ -1,8 +1,14 @@
+import cx from 'classnames'
 import { observer } from 'mobx-react-lite'
 
 import { Button } from '../Button'
 
 export interface PaginationProps {
+  /**
+   * Root element className
+   */
+  className?: string
+
   /**
    * The current page, 0 indexed
    */
@@ -19,7 +25,7 @@ export interface PaginationProps {
   setPage: (page: number) => void
 }
 
-export const Pagination = observer(({ page, pagesCount, setPage }: PaginationProps) => {
+export const Pagination = observer(({ className, page, pagesCount, setPage }: PaginationProps) => {
   const onPrevClick = () => {
     setPage(Math.max(0, page - 1))
   }
@@ -29,11 +35,15 @@ export const Pagination = observer(({ page, pagesCount, setPage }: PaginationPro
   }
 
   return (
-    <div className="flex w-full items-center justify-between">
+    <div className={cx('flex w-full items-center justify-between', className)}>
       <Button variant="secondary" onClick={onPrevClick}>
         {`<`} Prev
       </Button>
-      {page + 1} / {pagesCount}
+
+      <span>
+        Page {page + 1} of {pagesCount}
+      </span>
+
       <Button variant="secondary" onClick={onNextClick}>
         Next {`>`}
       </Button>

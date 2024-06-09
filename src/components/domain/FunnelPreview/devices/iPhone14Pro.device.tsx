@@ -42,7 +42,7 @@ export const IPhone14ProDevice = ({ children, bgColor, theme }: Props) => {
         }}
       >
         {/* The rendered content */}
-        <div className="p-3">{children}</div>
+        <div className="p-3 pt-6">{children}</div>
       </div>
     </div>
   )

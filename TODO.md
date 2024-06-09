@@ -1,13 +1,5 @@
 # TODO
 
-## v1
-
-- Control panel
-- UI Alerts when wrong data
-- Check all browsers
-- Test with varied data, (one list item without image, invalid colors (strings but not hex) etc)
-- Extract <Modal  />
-
 ## v2
 
 - Android

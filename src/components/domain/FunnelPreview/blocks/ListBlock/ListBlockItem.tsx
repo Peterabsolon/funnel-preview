@@ -12,7 +12,7 @@ export const ListBlockItem = ({ item }: ListBlockItemProps) => {
       {src && <img width="20%" alt={title} src={src} />}
 
       <div>
-        <p className="text-slate-800">{title}</p>
+        <p className="text-xl font-bold text-slate-800">{title}</p>
 
         {description && <p className="mt-2 text-slate-800">{description}</p>}
       </div>
