@@ -53,9 +53,6 @@ test.describe('Preview', () => {
   test('Renders funnel data as expected', async ({}) => {})
 
   test('Can change pages', async ({}) => {})
-
-  // Later..
-  test('Preserves viewport size as expected when scaling preview device size', async ({}) => {})
 })
 
 const validatePreviewRender = async (page: Page) => {

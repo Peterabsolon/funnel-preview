@@ -18,8 +18,6 @@ export const Header = observer(() => {
       </div>
 
       <div className="flex gap-4">
-        <Button variant="secondary">Sync devices toggle</Button>
-
         <Button onClick={app.reset} variant="secondary">
           Reset
         </Button>
