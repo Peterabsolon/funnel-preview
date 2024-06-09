@@ -2,8 +2,6 @@
 
 ## v1
 
-- Use ZOD to parse data
-- E2E
 - Screenshot tests
 - Basic unit, integration test
 - Center landing page logo

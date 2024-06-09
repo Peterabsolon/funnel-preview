@@ -18,9 +18,10 @@ const DEFAULT_BUTTON_LABEL = 'Select files'
 
 export type AcceptFilesPresets = 'JSON'
 
-// Let's just pass a key instead of having to remember this
 const ACCEPT_FILES_PRESETS: { [key in AcceptFilesPresets]: Accept } = {
-  JSON: { 'application/json': ['.json'] },
+  JSON: {
+    'application/json': ['.json'],
+  },
 }
 
 const DEFAULT_ICON: { [key in AcceptFilesPresets]: ReactNode } = {
@@ -67,6 +68,11 @@ export const Dropzone = observer(
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
       ...props,
+      /**
+       * Needed so we can test file upload properly with Playwright
+       * https://github.com/microsoft/playwright/issues/8850#issuecomment-1842670260
+       */
+      useFsAccessApi: false,
       accept,
     })
 
@@ -82,14 +88,16 @@ export const Dropzone = observer(
       >
         {isDragActive && <div className="absolute inset-0 z-10 bg-blue-400 opacity-20" />}
 
-        <div className="z-20 flex w-full flex-col items-center justify-center">
+        <div className="z-20 flex w-full flex-col items-center justify-center" data-testid="dropzone">
           <input {...getInputProps()} />
 
           {icon && icon}
 
           <p className="mb-12 text-center">{isDragActive ? 'Drop the file here' : label}</p>
 
-          <Button className="w-full max-w-60">{buttonLabel}</Button>
+          <Button id="omg" className="w-full max-w-60">
+            {buttonLabel}
+          </Button>
         </div>
       </div>
     )
