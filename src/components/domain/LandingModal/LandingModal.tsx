@@ -9,10 +9,11 @@ import { Logo } from '../Logo'
 export const LandingModal = observer(() => {
   return (
     <div className="flex flex-1 items-center justify-center">
-      <Card className="flex flex-col items-center self-center w-full max-w-[640px]">
-        <div className="flex items-center mb-8">
-          <h1 className="mr-4 font-medium">Welcome to</h1>
-          <Logo withText />
+      <Card className="flex w-full max-w-[640px] flex-col items-center self-center">
+        <div className="mb-8 flex items-center justify-center">
+          <h1 className="w-32 flex-1 text-right font-medium">Welcome to</h1>
+          <Logo withText={false} className="mx-4" />
+          <h1 className="w-32 flex-1 text-left font-medium">Funnel Preview</h1>
         </div>
 
         <Dropzone
