@@ -1,12 +1,12 @@
 import { ReactNode } from 'react'
 
-import { BrowserTheme, BrowserType } from '../../Funnel.types'
+import { BrowserType, DeviceTheme } from '../../Funnel.types'
 
 interface FunnelPreviewBrowserData {
   headerImgUrl: string
 }
 
-const BROWSERS: { [key in BrowserType]: { [theme in BrowserTheme]: FunnelPreviewBrowserData } } = {
+const BROWSERS: { [key in BrowserType]: { [theme in DeviceTheme]: FunnelPreviewBrowserData } } = {
   Safari: {
     dark: {
       headerImgUrl: '',
@@ -28,7 +28,7 @@ const BROWSERS: { [key in BrowserType]: { [theme in BrowserTheme]: FunnelPreview
 
 export interface FunnelPreviewBrowserProps {
   browser: BrowserType
-  theme: BrowserTheme
+  theme: DeviceTheme
   children: ReactNode
 }
 

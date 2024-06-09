@@ -2,41 +2,10 @@ import cx from 'classnames'
 import { observer } from 'mobx-react-lite'
 import { ReactNode } from 'react'
 
-import { DeviceType } from '../Funnel.types'
-
-interface FunnelPreviewDeviceData {
-  /**
-   * Human readable name of a device
-   * @example "iPhone 14 Pro Max"
-   */
-  name: string
-
-  /**
-   * Device mockup image aspect ratio
-   */
-  deviceAspectRatio: number
-
-  /**
-   * Viewport offset relative to device, as fraction
-   */
-  viewportPosition: {
-    top: number
-    left: number
-    right: number
-    bottom: number
-  }
-
-  /**
-   * URL of the device mockup image
-   */
-  deviceMockupImgUrl: string
-}
-
-const DEVICES: { [key in DeviceType]: FunnelPreviewDeviceData } = {
+export const DEVICES = {
   iPhone14Pro: {
     name: 'iPhone 14 Pro',
     deviceMockupImgUrl: '/devices/iPhone 14 Pro – Space Black.png',
-    // these are based on the above mockup image I got from the internetz
     deviceAspectRatio: 2672 / 1311,
     viewportPosition: {
       top: 150 / 2672,
@@ -45,7 +14,11 @@ const DEVICES: { [key in DeviceType]: FunnelPreviewDeviceData } = {
       bottom: 200 / 1311,
     },
   },
-}
+} as const
+
+export type DeviceType = keyof typeof DEVICES
+
+export type FunnelPreviewDeviceData = (typeof DEVICES)[DeviceType]
 
 export interface FunnelPreviewDeviceProps {
   bgColor?: string

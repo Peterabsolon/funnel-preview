@@ -7,11 +7,14 @@ import { Funnel } from '~/types'
 
 import funnelDemo from '../../fixtures/demo.funnel.json'
 
+// export type AppTheme = 'light' | 'dark'
+
 export class AppStore {
   // ====================================================
   // Model
   // ====================================================
   funnels = observable<FunnelStore>([])
+  // theme: AppTheme = 'dark'
 
   constructor() {
     makeAutoObservable(this)
@@ -42,14 +45,14 @@ export class AppStore {
   }
 
   /**
-   * Loads the demo funnel file
+   * Loads the demo funnel file.
    */
   useDemoFile = () => {
     this.createFunnel(funnelDemo as Funnel)
   }
 
   /**
-   * Resets all state
+   * Resets all the state.
    */
   reset = () => {
     this.funnels.clear()
