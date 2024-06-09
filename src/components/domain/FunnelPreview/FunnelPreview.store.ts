@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid'
 
 import { Funnel } from '~/types'
 
-import { DeviceTheme, DeviceType } from './Funnel.types'
+import { DeviceTheme, DeviceType } from './FunnelPreview.types'
 
 export class FunnelStore {
   // ====================================================
@@ -45,7 +45,19 @@ export class FunnelStore {
   // ====================================================
   // Actions
   // ====================================================
-  setData = (data: Funnel) => (this.data = data)
-  setPage = (page: number) => (this.page = page)
-  setDevice = (device: DeviceType) => (this.device = device)
+  setData = (data: Funnel) => {
+    this.data = data
+  }
+
+  setPage = (page: number) => {
+    this.page = page
+  }
+
+  setDevice = (device: DeviceType) => {
+    this.device = device
+  }
+
+  toggleDarkTheme = () => {
+    this.deviceTheme = this.deviceTheme === 'dark' ? 'light' : 'dark'
+  }
 }

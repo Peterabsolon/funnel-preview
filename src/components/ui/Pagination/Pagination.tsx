@@ -30,9 +30,13 @@ export const Pagination = observer(({ page, pagesCount, setPage }: PaginationPro
 
   return (
     <div className="flex w-full items-center justify-between">
-      <Button onClick={onPrevClick}>{`<`} Prev</Button>
+      <Button variant="secondary" onClick={onPrevClick}>
+        {`<`} Prev
+      </Button>
       {page + 1} / {pagesCount}
-      <Button onClick={onNextClick}>Next {`>`}</Button>
+      <Button variant="secondary" onClick={onNextClick}>
+        Next {`>`}
+      </Button>
     </div>
   )
 })

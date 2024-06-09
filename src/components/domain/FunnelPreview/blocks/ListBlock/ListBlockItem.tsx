@@ -8,7 +8,7 @@ export const ListBlockItem = ({ item }: ListBlockItemProps) => {
   const { id, src, title, description } = item
 
   return (
-    <li key={id} className="flex flex-row items-center justify-start gap-6">
+    <li key={id} className="mb-6 flex flex-row items-center justify-start gap-6">
       {src && <img width="20%" alt={title} src={src} />}
 
       <div>

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { DeviceTheme } from '../../Funnel.types'
+import { DeviceTheme } from '../FunnelPreview.types'
 
 type Props = {
   /**

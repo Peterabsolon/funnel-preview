@@ -7,5 +7,5 @@ export interface ImageBlockProps {
 export const ImageBlock = ({ block }: ImageBlockProps) => {
   const { src, alt } = block
 
-  return <img className="mb-6" alt={alt || 'Image block'} src={src} />
+  return <img className="mb-6 rounded-md" alt={alt || 'Image block'} src={src} />
 }

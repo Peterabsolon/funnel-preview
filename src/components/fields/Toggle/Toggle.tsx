@@ -1,10 +1,22 @@
 import cx from 'classnames'
+import { InputHTMLAttributes } from 'react'
 
-export interface ToggleProps {
+// export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ToggleProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
-   * The label
+   * The field label, rendered above
    */
   label: string
+
+  /**
+   * Off label, rendeerd on the left
+   */
+  labelOff?: string
+
+  /**
+   * On label, rendered on the right
+   */
+  labelOn?: string
 
   /**
    * Is the toggle enabled?
@@ -12,10 +24,12 @@ export interface ToggleProps {
   checked?: boolean
 }
 
-export const Toggle = ({ label, checked }: ToggleProps) => {
+export const Toggle = ({ label, labelOff, labelOn, checked, onChange }: ToggleProps) => {
   return (
     <label className="inline-flex cursor-pointer items-center">
-      <input type="checkbox" checked={checked} className="peer sr-only" />
+      <input type="checkbox" checked={checked} onChange={onChange} className="peer sr-only" />
+
+      {labelOff}
 
       <div
         className={cx(
@@ -24,6 +38,8 @@ export const Toggle = ({ label, checked }: ToggleProps) => {
           "after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-['']",
         )}
       />
+
+      {labelOn && <span className="ml-2">{labelOn}</span>}
 
       <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">{label}</span>
     </label>

@@ -12,7 +12,6 @@
 
 - Android
 - Comparisons
-- Canvas controls - e.g. scale devices to actual size or to fill viewport height
 - Appear effect
 - Scroll as if on mobile device, e.g. drag-to-scroll
 

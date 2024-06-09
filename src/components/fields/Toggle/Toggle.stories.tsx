@@ -18,3 +18,11 @@ export const Default: Story = {
     label: 'Toggle me?',
   },
 }
+
+export const OnOffLabels: Story = {
+  args: {
+    label: 'Toggle me?',
+    labelOff: 'Off',
+    labelOn: 'On',
+  },
+}
