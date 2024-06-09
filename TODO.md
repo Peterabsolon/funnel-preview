@@ -2,7 +2,6 @@
 
 ## v1
 
-- Sort imports lint rule, save time
 - Use ZOD to parse data
 - E2E
 - Screenshot tests
@@ -17,11 +16,14 @@
 ## v2
 
 - Comparisons
+- Canvas controls - e.g. scale devices to actual size or to fill viewport height
 - Appear effect
+- Scroll as if on mobile device, e.g. drag-to-scroll
 
 ## V3
 
 - Show previously uploaded files, store in localStorage
+- Parse HEX colors
 
 ## v4
 

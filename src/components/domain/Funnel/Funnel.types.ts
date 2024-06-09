@@ -1,7 +1,7 @@
 export type { DeviceType } from './FunnelPreview/FunnelPreviewDevice'
 
-export const DeviceThemes = ['light', 'dark'] as const
-export type DeviceTheme = (typeof DeviceThemes)[number]
+export const DEVICE_THEMES = ['light', 'dark'] as const
+export type DeviceTheme = (typeof DEVICE_THEMES)[number]
 
-export const BrowserTypes = ['Safari', 'Chrome'] as const
-export type BrowserType = (typeof BrowserTypes)[number]
+export const BROWSER_TYPES = ['Safari', 'Chrome'] as const
+export type BrowserType = (typeof BROWSER_TYPES)[number]

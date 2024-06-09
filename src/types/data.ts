@@ -1,54 +1,24 @@
 /**
- * In real world/ideal case these are generated from some backend schema like swagger.json or graphql.schema etc.
+ * Went with schema first approach using Zod to generate types.
+ *
+ * Can be done in reverse using https://github.com/fabien0102/ts-to-zod.
+ * Working with TypeScript interfaces could be a bit cleaner, properties comments are preserved etc.
  */
 
-export type TextBlockAlign = 'left' | 'center' | 'right'
+import { z } from 'zod'
 
-export interface TextBlock {
-  id: string
-  type: 'text'
-  text: string
-  color?: string
-  align?: TextBlockAlign
-}
+import { TEXT_BLOCK_ALIGN } from './enums'
+import * as schemas from './schemas'
 
-export interface ButtonBlock {
-  id: string
-  type: 'button'
-  text: string
-  color?: string
-  bgColor?: string
-}
+export type TextBlockAlign = (typeof TEXT_BLOCK_ALIGN)[number]
 
-export interface ListBlockItem {
-  id: string
-  title: string
-  description?: string
-  src?: string
-}
+export type TextBlock = z.infer<typeof schemas.TextBlockSchema>
+export type ButtonBlock = z.infer<typeof schemas.ButtonBlockSchema>
+export type ListBlockItem = z.infer<typeof schemas.ListBlockItemSchema>
+export type ListBlock = z.infer<typeof schemas.ListBlockSchema>
+export type ImageBlock = z.infer<typeof schemas.ImageBlockSchema>
 
-export interface ListBlock {
-  id: string
-  type: 'list'
-  items: ListBlockItem[]
-}
+export type FunnelBlock = z.infer<typeof schemas.FunnelBlockSchema>
+export type FunnelPage = z.infer<typeof schemas.FunnelPageSchema>
 
-export interface ImageBlock {
-  id: string
-  type: 'image'
-  src: string
-  alt?: string
-}
-
-export type FunnelBlock = TextBlock | ButtonBlock | ListBlock | ImageBlock
-
-export interface FunnelPage {
-  id: string
-  blocks: FunnelBlock[]
-}
-
-export interface Funnel {
-  name: string
-  bgColor?: string
-  pages: FunnelPage[]
-}
+export type Funnel = z.infer<typeof schemas.FunnelSchema>

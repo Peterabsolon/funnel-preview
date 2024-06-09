@@ -1,11 +1,11 @@
 import { observer } from 'mobx-react-lite'
 
-import { FunnelPage } from '~/types'
+import * as T from '~/types'
 
 import { ButtonBlock, ImageBlock, ListBlock, TextBlock } from './blocks'
 
 export interface FunnelPreviewPageProps {
-  page: FunnelPage
+  page: T.FunnelPage
 }
 
 export const FunnelPreviewPage = observer(({ page }: FunnelPreviewPageProps) => {
