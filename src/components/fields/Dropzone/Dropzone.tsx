@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite'
 import { ReactNode } from 'react'
 import { Accept, DropzoneProps as RCDropzoneProps, useDropzone } from 'react-dropzone'
 
-import { JSONIcon } from '~/components/icons'
+import { JSONIcon, PlusIcon } from '~/components/icons'
 import { Field, FieldProps } from '~/components/ui'
 import { Button } from '~/components/ui/Button'
 
@@ -120,7 +120,7 @@ export const Dropzone = observer(
               {isDragActive ? (isDragAccept ? 'Drop the file here' : 'This file is not supported :(') : label}
             </p>
 
-            <Button id="omg" className="w-full max-w-60">
+            <Button iconLeft={<PlusIcon className="mr-2 h-4 w-4" />} className="w-full max-w-64">
               {buttonLabel}
             </Button>
           </div>

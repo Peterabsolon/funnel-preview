@@ -3,7 +3,7 @@
 import cx from 'classnames'
 import { observer } from 'mobx-react-lite'
 
-import { Button, Logo } from '~/components'
+import { Button, Logo, PlusIcon, RestartIcon } from '~/components'
 
 import { app } from './store'
 
@@ -19,11 +19,11 @@ export const Header = observer(() => {
       </div>
 
       <div className="flex gap-4">
-        <Button onClick={app.handleReset} variant="secondary">
+        <Button iconLeft={<RestartIcon className="mr-2 h-4 w-4" />} onClick={app.handleReset} variant="secondary">
           Reset
         </Button>
 
-        <Button onClick={app.handleAddNewFunnel} variant="primary">
+        <Button iconLeft={<PlusIcon className="mr-2 h-4 w-4" />} onClick={app.handleAddNewFunnel} variant="primary">
           Add new
         </Button>
       </div>

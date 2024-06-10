@@ -2,6 +2,7 @@ import { observer } from 'mobx-react-lite'
 
 import { app } from '~/app/store'
 import { Dropzone } from '~/components/fields'
+import { BoltIcon } from '~/components/icons'
 import { Alert, Button, Modal } from '~/components/ui'
 
 import { Logo } from '../Logo'
@@ -17,7 +18,7 @@ export const LandingModal = observer(({ withBackdrop, title, onClose }: LandingM
     <Modal withBackdrop={withBackdrop}>
       <div className="mb-8 flex items-center justify-center">
         {title ? (
-          <h1 className="w-32 flex-1 text-center font-medium">{title}</h1>
+          <h1 className="flex-1 text-center text-lg font-medium">{title}</h1>
         ) : (
           <>
             <h1 className="w-32 flex-1 text-right font-medium">Welcome to</h1>
@@ -43,7 +44,12 @@ export const LandingModal = observer(({ withBackdrop, title, onClose }: LandingM
 
       <span className="mb-4">Don&apos;t have a file?</span>
 
-      <Button onClick={app.handleUseDemoFile} className="w-full max-w-60" variant="secondary">
+      <Button
+        iconLeft={<BoltIcon className="mr-2 h-4 w-4" />}
+        onClick={app.handleUseDemoFile}
+        className="w-full max-w-60"
+        variant="secondary"
+      >
         View demo
       </Button>
 

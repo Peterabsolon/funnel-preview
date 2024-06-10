@@ -1,9 +1,12 @@
 import type { Meta } from '@storybook/react'
 
 import { ArrowIcon } from './Arrow.icon'
+import { BoltIcon } from './Bolt.icon'
 import { ChevronIcon } from './Chevron.icon'
 import { CodeBracketIcon } from './CodeBracket.icon'
 import { JSONIcon } from './JSON.icon'
+import { PlusIcon } from './Plus.icon'
+import { RestartIcon } from './Restart.icon'
 
 const meta = {
   title: 'Icons',
@@ -19,9 +22,12 @@ const Template = () => {
   return (
     <div className="flex gap-2">
       <ArrowIcon className={className} />
+      <BoltIcon className={className} />
       <ChevronIcon className={className} />
       <CodeBracketIcon className={className} />
       <JSONIcon className="w-12" />
+      <PlusIcon className={className} />
+      <RestartIcon className={className} />
     </div>
   )
 }

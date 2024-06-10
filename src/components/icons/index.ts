@@ -1,4 +1,7 @@
 export * from './Arrow.icon'
+export * from './Bolt.icon'
 export * from './Chevron.icon'
 export * from './CodeBracket.icon'
 export * from './JSON.icon'
+export * from './Plus.icon'
+export * from './Restart.icon'
