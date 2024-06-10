@@ -1,14 +1,17 @@
 # TODO
 
-## v1.1
+## v0
 
+- deploy
 - move fonts + globals to ~/assets
 - basic zoom using scale()
 - simple button select
+
+## v1.1
+
 - change bg color input
 - Simple select for None | iPhone | Android, maybe a list to "prep for more"
 - Ask ChatGPT for general advice/improvements
-- Nicer icons for next/prev
 
 ## v2
 

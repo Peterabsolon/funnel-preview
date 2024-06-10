@@ -17,13 +17,13 @@ test.describe('Landing', () => {
   test('Loads page content successfully', async ({ page }) => {
     await expect(page.getByText('Welcome to')).toBeVisible()
     await expect(page.getByText('Funnel Preview')).toBeVisible()
-    await expect(page.getByRole('button', { name: 'Select files' })).toBeVisible()
-    await expect(page.getByRole('button', { name: 'Use demo file' })).toBeVisible()
+    await expect(page.getByRole('button', { name: 'Select funnel file' })).toBeVisible()
+    await expect(page.getByRole('button', { name: 'View demo' })).toBeVisible()
     await expect(page).toHaveScreenshot({ fullPage: true })
   })
 
   test('Can upload valid JSON file via button', async ({ page }) => {
-    await uploadFile({ page, buttonLabel: 'Select files', filePath: DEMO_FUNNEL_FIXTURE })
+    await uploadFile({ page, buttonLabel: 'Select funnel file', filePath: DEMO_FUNNEL_FIXTURE })
     await validatePreviewRender(page)
   })
 
@@ -40,7 +40,7 @@ test.describe('Landing', () => {
   })
 
   test('Can use demo JSON file', async ({ page }) => {
-    await page.getByRole('button', { name: 'Use demo file' }).click()
+    await page.getByRole('button', { name: 'View demo' }).click()
     await validatePreviewRender(page)
   })
 
