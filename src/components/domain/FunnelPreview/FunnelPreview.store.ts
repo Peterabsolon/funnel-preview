@@ -30,6 +30,11 @@ export class FunnelStore {
   deviceTheme: DeviceTheme = 'dark'
 
   /**
+   * The scale to render the device model in
+   */
+  deviceScale = 1
+
+  /**
    * Which Funnel page is being viewed
    */
   page = 0
@@ -55,6 +60,10 @@ export class FunnelStore {
 
   setDevice = (device: DeviceType) => {
     this.device = device
+  }
+
+  setDeviceScale = (scale: number) => {
+    this.deviceScale = scale
   }
 
   toggleDarkTheme = () => {

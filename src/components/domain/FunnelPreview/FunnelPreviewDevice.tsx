@@ -21,14 +21,15 @@ export interface FunnelPreviewDeviceProps {
   className?: string
   device: DeviceType
   theme: DeviceTheme
+  scale: number
 }
 
 export const FunnelPreviewDevice = observer(
-  ({ bgColor, children, className, device, theme }: FunnelPreviewDeviceProps) => {
+  ({ bgColor, children, className, device, scale, theme }: FunnelPreviewDeviceProps) => {
     const { Component } = DEVICES[device]
 
     return (
-      <div className={className}>
+      <div className={className} style={{ transform: `scale(${scale})`, transformOrigin: 'top' }}>
         <Component bgColor={bgColor} theme={theme}>
           {children}
         </Component>

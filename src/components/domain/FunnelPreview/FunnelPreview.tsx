@@ -13,7 +13,7 @@ export interface FunnelProps {
 }
 
 export const FunnelPreview = observer(({ funnel }: FunnelProps) => {
-  const { device, deviceTheme, page, setPage } = funnel
+  const { device, deviceTheme, deviceScale, page, setPage } = funnel
   const { pages = [], bgColor } = funnel.data ?? {}
 
   const pageToView = pages[page]
@@ -23,7 +23,7 @@ export const FunnelPreview = observer(({ funnel }: FunnelProps) => {
       <Pagination className="mb-8" page={page} setPage={setPage} pagesCount={pages.length} />
 
       {pageToView && (
-        <FunnelPreviewDevice bgColor={bgColor} className="mb-6" device={device} theme={deviceTheme}>
+        <FunnelPreviewDevice bgColor={bgColor} className="mb-6" device={device} theme={deviceTheme} scale={deviceScale}>
           <FunnelPreviewPage page={pageToView} />
         </FunnelPreviewDevice>
       )}
