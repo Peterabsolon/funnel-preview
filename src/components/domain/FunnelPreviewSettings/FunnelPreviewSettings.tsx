@@ -30,7 +30,7 @@ export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettings
         acceptFilesPreset="JSON"
         label="Drop new funnel JSON file here or"
         buttonLabel="Select new funnel file"
-        onDropAccepted={app.loadFiles}
+        onDropAccepted={app.handleLoadFiles}
       />
 
       <Range

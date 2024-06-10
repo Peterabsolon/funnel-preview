@@ -12,7 +12,7 @@ export class FunnelPreviewStore {
   /**
    * ID to use for React render key
    */
-  id = uuid()
+  id: string
 
   /**
    * The Funnel data to preview
@@ -35,6 +35,7 @@ export class FunnelPreviewStore {
   constructor(data?: Funnel) {
     makeAutoObservable(this)
     this.data = data
+    this.id = uuid()
   }
 
   // ====================================================

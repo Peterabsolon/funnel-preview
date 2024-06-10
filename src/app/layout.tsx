@@ -21,7 +21,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body className={`${font.className} flex flex-col items-stretch justify-stretch bg-slate-950`}>
         <Header />
-        <main className="z-20 flex flex-1 items-stretch justify-center overflow-auto px-8 pb-20">{children}</main>
+        <main className="z-20 flex flex-1 items-stretch justify-center overflow-auto px-8">{children}</main>
         <Footer />
       </body>
     </html>

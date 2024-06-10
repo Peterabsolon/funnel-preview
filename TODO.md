@@ -1,5 +1,7 @@
 # TODO
 
+- Icons everywhere
+
 ## v1.1
 
 - Loading state for device ala MacOS boot

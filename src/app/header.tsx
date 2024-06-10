@@ -19,8 +19,12 @@ export const Header = observer(() => {
       </div>
 
       <div className="flex gap-4">
-        <Button onClick={app.reset} variant="secondary">
+        <Button onClick={app.handleReset} variant="secondary">
           Reset
+        </Button>
+
+        <Button onClick={app.handleAddNewFunnel} variant="primary">
+          Add new
         </Button>
       </div>
     </header>

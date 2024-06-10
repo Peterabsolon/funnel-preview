@@ -4,7 +4,7 @@ import cx from 'classnames'
 import { observer } from 'mobx-react-lite'
 import { ButtonHTMLAttributes, ReactNode } from 'react'
 
-export type ButtonVariant = 'primary' | 'secondary'
+export type ButtonVariant = 'primary' | 'secondary' | 'text'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
@@ -32,6 +32,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 /** TODO: Enable Tailwind VSCode extension setting such that intellisense works outside of JSX */
 const variants: { [key in ButtonVariant]: string } = {
+  text: 'hover:bg-blue-400',
   primary: 'bg-blue-500 hover:bg-blue-400',
   secondary: 'border border-blue-400 bg-slate-900 hover:bg-blue-400 disabled:hover:bg-slate-900 disabled:opacity-60',
 }
@@ -42,9 +43,13 @@ export const Button = observer(
       {...props}
       className={cx(
         'flex flex-row items-center justify-center',
-        'emboss-effect relative rounded-md px-8 py-2 font-medium drop-shadow-2xl transition-colors',
+        'relative rounded-md px-8 py-2 font-medium drop-shadow-2xl transition-colors',
         'disabled:cursor-not-allowed',
-        { 'pl-6': iconLeft, 'pr-6': iconRight },
+        {
+          'pl-6': iconLeft,
+          'pr-6': iconRight,
+          'emboss-effect': variant !== 'text',
+        },
         variants[variant],
         className,
       )}
