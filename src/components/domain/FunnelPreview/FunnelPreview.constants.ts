@@ -1,4 +1,4 @@
-import { IPhone14ProDevice } from './devices/iPhone14Pro.device'
+import { AndroidDevice, IPhone14ProDevice } from './devices'
 
 export const DEVICE_THEMES = ['light', 'dark'] as const
 
@@ -9,7 +9,11 @@ export const DEVICES = {
     minViewportHeightForFullScale: 1280,
   },
 
-  // TODO: Android etc
+  Android: {
+    name: 'Nexus 6P', // not actually, some random model I found .svg for
+    Component: AndroidDevice,
+    minViewportHeightForFullScale: 1280,
+  },
 } as const
 
 // TODO:

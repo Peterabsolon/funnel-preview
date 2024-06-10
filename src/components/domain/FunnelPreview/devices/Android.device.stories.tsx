@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { IPhone14ProDevice } from './iPhone14Pro.device'
+import { AndroidDevice } from './Android.device'
 
 const meta = {
-  title: 'devices/iPhone14Pro',
-  component: IPhone14ProDevice,
+  title: 'devices/Android',
+  component: AndroidDevice,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof IPhone14ProDevice>
+} satisfies Meta<typeof AndroidDevice>
 
 export default meta
 
@@ -18,13 +18,13 @@ type Story = StoryObj<typeof meta>
 export const Dark: Story = {
   args: {
     theme: 'dark',
-    children: 'IPhone14ProDevice - dark theme',
+    children: 'AndroidDevice - dark theme',
   },
 }
 
 export const Light: Story = {
   args: {
     theme: 'light',
-    children: 'IPhone14ProDevice - light theme',
+    children: 'AndroidDevice - light theme',
   },
 }

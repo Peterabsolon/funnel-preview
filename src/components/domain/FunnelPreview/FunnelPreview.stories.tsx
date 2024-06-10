@@ -20,17 +20,36 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Dark: Story = {
+export const iPhone14ProDark: Story = {
   args: {
     funnel: new FunnelStore(funnelDemo as Funnel),
   },
 }
 
-const funnelLight = new FunnelStore(funnelDemo as Funnel)
-funnelLight.toggleDarkTheme()
+const funnellPhone14ProLight = new FunnelStore(funnelDemo as Funnel)
+funnellPhone14ProLight.toggleDarkTheme()
 
-export const Light: Story = {
+export const iPhone14ProLight: Story = {
   args: {
-    funnel: funnelLight,
+    funnel: funnellPhone14ProLight,
+  },
+}
+
+const funnelAndroidDark = new FunnelStore(funnelDemo as Funnel)
+funnelAndroidDark.setDevice('Android')
+
+export const AndroidDark: Story = {
+  args: {
+    funnel: funnelAndroidDark,
+  },
+}
+
+const funnelAndroidLight = new FunnelStore(funnelDemo as Funnel)
+funnelAndroidLight.setDevice('Android')
+funnelAndroidLight.toggleDarkTheme()
+
+export const AndroidLight: Story = {
+  args: {
+    funnel: funnelAndroidLight,
   },
 }
