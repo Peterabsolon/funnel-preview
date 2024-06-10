@@ -10,6 +10,7 @@ describe('Page', () => {
   test('can view demo', () => {
     render(<Page />)
     expect(screen.getByRole('button', { name: 'Select funnel file' })).toBeDefined()
-    screen.getByRole('button', { name: 'View demo' })
+    screen.getByRole('button', { name: 'View demo' }).click()
+    expect(screen.getByText('My awesome funnel')).toBeDefined()
   })
 })
