@@ -47,12 +47,18 @@ test.describe('Landing', () => {
   test('Can not upload file with invalid extension', async ({}) => {})
 
   test('Can not use file with corrupted data', async ({}) => {})
+
+  test('Can not use file with invalid data shape', async ({}) => {})
 })
 
 test.describe('Preview', () => {
   test('Renders funnel data as expected', async ({}) => {})
 
   test('Can change pages', async ({}) => {})
+
+  test('Can change device scale', async ({}) => {})
+
+  test('Can hide device frame', async ({}) => {})
 })
 
 const validatePreviewRender = async (page: Page) => {
