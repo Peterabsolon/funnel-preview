@@ -22,8 +22,10 @@ export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettings
       <h2 className="mb-6 text-center text-xl">{name}</h2>
 
       <Dropzone
+        name="file"
         className="mb-6"
         classNameLabel="mb-6"
+        fieldLabel="JSON file"
         iconHidden
         acceptFilesPreset="JSON"
         label="Drop new funnel JSON file here or"
@@ -32,6 +34,7 @@ export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettings
       />
 
       <Range
+        name="scale"
         className="mb-6"
         label="Preview scale"
         minLabel="1/2"
@@ -42,14 +45,9 @@ export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettings
         onChange={(evt) => settings.setDeviceScale(+evt.target.value)}
       />
 
-      <Toggle
-        className="mb-6"
-        label="Show device frame"
-        checked={settings.isDeviceVisible}
-        onChange={settings.toggleIsDeviceVisible}
-      />
-
       <Select<DeviceType>
+        name="device"
+        label="Device model"
         className="mb-6"
         value={settings.device}
         onChange={settings.setDevice}
@@ -57,6 +55,14 @@ export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettings
           label: device.name,
           value: key as DeviceType,
         }))}
+      />
+
+      <Toggle
+        name="showDevice"
+        className="mb-6"
+        label="Show device frame"
+        checked={settings.isDeviceVisible}
+        onChange={settings.toggleIsDeviceVisible}
       />
 
       {settings.isDeviceVisible && (

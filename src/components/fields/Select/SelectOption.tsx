@@ -28,7 +28,7 @@ export const SelectOption = observer(<T extends string>({ option, value, onSelec
 
   return (
     <Button
-      className="flex-1 rounded-none first:rounded-bl-md first:rounded-tl-md last:rounded-br-md last:rounded-tr-md"
+      className="flex-1 rounded-none text-sm first:rounded-bl-md first:rounded-tl-md last:rounded-br-md last:rounded-tr-md"
       variant={isSelected ? 'primary' : 'secondary'}
       iconLeft={icon}
       onClick={handleClick}

@@ -44,7 +44,8 @@ export const AndroidDevice = observer(({ children, bgColor, theme, withFrame = t
         paddingLeft: 29,
         paddingRight: 35,
         paddingTop: withFrame ? 197 : 0,
-        paddingBottom: withFrame ? 108 : 237,
+        paddingBottom: withFrame ? 108 : 317,
+        margin: withFrame ? 0 : `0 -35px 0 -29px`,
       }}
     >
       {/* The viewport */}

@@ -9,6 +9,11 @@ export class FunnelPreviewSettingsStore {
   // State
   // ====================================================
   /**
+   * Is the settings panel opened?
+   */
+  isPanelOpened = true
+
+  /**
    * The device shell to render the Funnel in
    */
   device: DeviceType = 'iPhone14Pro'
@@ -51,9 +56,18 @@ export class FunnelPreviewSettingsStore {
 
   toggleIsDeviceVisible = () => {
     this.isDeviceVisible = !this.isDeviceVisible
+    this.setDeviceScale(1)
   }
 
   toggleDarkTheme = () => {
     this.deviceTheme = this.deviceTheme === 'dark' ? 'light' : 'dark'
+  }
+
+  openPanel = () => {
+    this.isPanelOpened = true
+  }
+
+  closePanel = () => {
+    this.isPanelOpened = false
   }
 }

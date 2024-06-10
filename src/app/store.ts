@@ -21,6 +21,7 @@ export class AppStore {
   // ====================================================
   funnels = observable<FunnelPreviewStore>([])
   parsingError?: parsingError = undefined
+  focusedFunnelIndex = 0
 
   constructor() {
     makeAutoObservable(this)
@@ -29,6 +30,10 @@ export class AppStore {
   // ====================================================
   // Computed
   // ====================================================
+  get funnelWithSettingsOpened() {
+    return this.funnels.find((f) => f.settings.isPanelOpened)
+  }
+
   get parsingErrorMessage() {
     return this.parsingError ? PARSING_ERROR_MESSAGES[this.parsingError] : undefined
   }

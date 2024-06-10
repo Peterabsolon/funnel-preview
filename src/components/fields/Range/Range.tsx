@@ -4,12 +4,9 @@ import cx from 'classnames'
 import { observer } from 'mobx-react-lite'
 import { InputHTMLAttributes } from 'react'
 
-export interface RangeProps extends InputHTMLAttributes<HTMLInputElement> {
-  /**
-   * The range label, rendered on top
-   */
-  label?: string
+import { Field, FieldProps } from '~/components/ui'
 
+export interface RangeProps extends InputHTMLAttributes<HTMLInputElement>, Omit<FieldProps, 'children'> {
   /**
    * Human readable label for min
    */
@@ -22,30 +19,26 @@ export interface RangeProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Range = observer(
-  ({ className, value, label, min = 0, minLabel, max = 100, maxLabel, ...inputProps }: RangeProps) => {
+  ({ className, value, label, min = 0, minLabel, max = 100, maxLabel, name, ...inputProps }: RangeProps) => {
     return (
-      <div className={cx('w-full', className)}>
-        {label && (
-          <label htmlFor="default-range" className="mb-2 block text-sm font-medium">
-            {label}
-          </label>
-        )}
+      <Field name={name} label={label}>
+        <div className={cx('w-full', className)}>
+          <input
+            name={name}
+            type="range"
+            value={value}
+            className={cx('range w-full cursor-pointer appearance-none rounded-full bg-slate-800')}
+            min={min}
+            max={max}
+            {...inputProps}
+          />
 
-        <input
-          id="default-range"
-          type="range"
-          value={value}
-          className={cx('range w-full cursor-pointer appearance-none rounded-full bg-slate-800')}
-          min={min}
-          max={max}
-          {...inputProps}
-        />
-
-        <div className="flex items-center justify-between">
-          <span>{minLabel || min}</span>
-          <span>{maxLabel || max}</span>
+          <div className="flex items-center justify-between">
+            <span>{minLabel || min}</span>
+            <span>{maxLabel || max}</span>
+          </div>
         </div>
-      </div>
+      </Field>
     )
   },
 )

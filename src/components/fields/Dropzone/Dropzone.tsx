@@ -6,6 +6,7 @@ import { ReactNode } from 'react'
 import { Accept, DropzoneProps as RCDropzoneProps, useDropzone } from 'react-dropzone'
 
 import { JSONIcon } from '~/components/icons'
+import { Field, FieldProps } from '~/components/ui'
 import { Button } from '~/components/ui/Button'
 
 const DEFAULT_LABEL = (
@@ -28,7 +29,7 @@ const DEFAULT_ICON: { [key in AcceptFilesPresets]: ReactNode } = {
   JSON: <JSONIcon className="mb-12 h-24 w-24 text-slate-700" />,
 }
 
-export interface DropzoneProps extends RCDropzoneProps {
+export interface DropzoneProps extends RCDropzoneProps, Omit<FieldProps, 'children'> {
   /**
    * Data format preset to accept
    */
@@ -45,9 +46,9 @@ export interface DropzoneProps extends RCDropzoneProps {
   classNameLabel?: string
 
   /**
-   * Optional label
+   * Label rendered above the Dropzone
    */
-  label?: ReactNode
+  fieldLabel?: string
 
   /**
    * Optional label
@@ -70,9 +71,11 @@ export const Dropzone = observer(
     acceptFilesPreset,
     className,
     classNameLabel,
+    fieldLabel,
     label = DEFAULT_LABEL,
     buttonLabel = DEFAULT_BUTTON_LABEL,
     iconHidden,
+    name,
     ...props
   }: DropzoneProps) => {
     const accept = props.accept ?? (acceptFilesPreset ? ACCEPT_FILES_PRESETS[acceptFilesPreset] : undefined)
@@ -89,38 +92,40 @@ export const Dropzone = observer(
     })
 
     return (
-      <div
-        className={cx(
-          'rounded-xl border-4 border-dashed border-slate-800',
-          'flex items-stretch justify-stretch',
-          'relative w-full p-10',
-          className,
-        )}
-        {...getRootProps()}
-      >
-        {isDragActive && (
-          <div
-            className={cx('absolute inset-0 z-10 rounded-xl', {
-              'bg-green-600': isDragAccept,
-              'bg-red-700': isDragReject,
-            })}
-          />
-        )}
+      <Field name={name} label={fieldLabel}>
+        <div
+          className={cx(
+            'rounded-xl border-4 border-dashed border-slate-800',
+            'flex items-stretch justify-stretch',
+            'relative w-full p-10',
+            className,
+          )}
+          {...getRootProps()}
+        >
+          {isDragActive && (
+            <div
+              className={cx('absolute inset-0 z-10 rounded-xl', {
+                'bg-green-600': isDragAccept,
+                'bg-red-700': isDragReject,
+              })}
+            />
+          )}
 
-        <div className="z-20 flex w-full flex-col items-center justify-center" data-testid="dropzone">
-          <input {...getInputProps()} />
+          <div className="z-20 flex w-full flex-col items-center justify-center" data-testid="dropzone">
+            <input {...getInputProps()} />
 
-          {icon && !iconHidden && icon}
+            {icon && !iconHidden && icon}
 
-          <p className={cx('mb-12 text-center', classNameLabel)}>
-            {isDragActive ? (isDragAccept ? 'Drop the file here' : 'This file is not supported :(') : label}
-          </p>
+            <p className={cx('mb-12 text-center', classNameLabel)}>
+              {isDragActive ? (isDragAccept ? 'Drop the file here' : 'This file is not supported :(') : label}
+            </p>
 
-          <Button id="omg" className="w-full max-w-60">
-            {buttonLabel}
-          </Button>
+            <Button id="omg" className="w-full max-w-60">
+              {buttonLabel}
+            </Button>
+          </div>
         </div>
-      </div>
+      </Field>
     )
   },
 )

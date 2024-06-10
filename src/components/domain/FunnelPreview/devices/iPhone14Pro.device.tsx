@@ -1,3 +1,4 @@
+import cx from 'classnames'
 import { observer } from 'mobx-react-lite'
 import { ReactNode } from 'react'
 
@@ -30,7 +31,9 @@ export const IPhone14ProDevice = observer(({ children, bgColor, theme, withFrame
 
   return (
     <div
-      className="relative bg-cover"
+      className={cx('relative bg-cover', {
+        'rounded-xl': !withFrame,
+      })}
       style={{
         backgroundImage: deviceBgImgUrl,
         /**
@@ -43,11 +46,14 @@ export const IPhone14ProDevice = observer(({ children, bgColor, theme, withFrame
         paddingRight: 26,
         paddingTop: withFrame ? 81 : 0,
         paddingBottom: withFrame ? 156 : 237,
+        margin: withFrame ? 0 : '1rem -26px',
       }}
     >
       {/* The viewport */}
       <div
-        className="no-scrollbar overflow-y-auto"
+        className={cx('no-scrollbar overflow-y-auto', {
+          'rounded-xl': !withFrame,
+        })}
         style={{
           backgroundColor: bgColor,
           width: '100%',
