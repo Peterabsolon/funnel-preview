@@ -1,0 +1,19 @@
+/* This is meh to do with Tailwind */
+
+.range::-webkit-slider-thumb {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  @apply transition-colors;
+}
+
+.range::-webkit-slider-thumb:hover {
+  @apply bg-blue-300;
+}
+
+.range::-webkit-slider-thumb:active {
+  @apply bg-blue-400;
+}
