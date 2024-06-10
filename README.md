@@ -1,3 +1,3 @@
 # Funnel Preview
 
-### [Live demo URL](https://perspective-preview-ladnyvhi5-peterabsolons-projects.vercel.app/)
+### [Live demo URL](https://perspective-preview-chi.vercel.app/)
