@@ -13,7 +13,9 @@ export const Header = observer(() => {
   }
 
   return (
-    <header className={cx('flex items-center justify-between p-8 py-6', 'border-b border-b-slate-800 bg-slate-950')}>
+    <header
+      className={cx('flex h-24 items-center justify-between p-8 py-6', 'border-b border-b-slate-800 bg-slate-950')}
+    >
       <div className="flex items-center">
         <Logo withText />
       </div>

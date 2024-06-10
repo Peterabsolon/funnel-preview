@@ -110,9 +110,15 @@ export class AppStore {
   }
 
   /**
-   * Opens the funnel settings.
+   * Opens/closes the funnel settings.
    */
   handleFunnelClick = (funnel: FunnelPreviewStore) => {
+    // Only enable closing the panel when multiple funnels opened
+    if (this.funnelOpened === funnel && this.hasManyFunnels) {
+      this.funnelOpened = undefined
+      return
+    }
+
     this.funnelOpened = funnel
   }
 

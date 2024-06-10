@@ -30,7 +30,7 @@ const App = observer(() => {
         ))}
       </main>
 
-      <div style={{ width: SIDEBAR_WIDTH }} className="py-6">
+      <div style={{ width: SIDEBAR_WIDTH }} className="absolute left-auto right-8 top-24 py-6">
         {app.funnelOpened && <FunnelPreviewSettings funnel={app.funnelOpened} />}
       </div>
 
