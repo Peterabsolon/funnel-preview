@@ -1,9 +1,9 @@
-import './globals.css'
+import '../assets/globals.css'
 
 import type { Metadata } from 'next'
 import { ReactNode } from 'react'
 
-import { font } from './font'
+import { font } from '../assets'
 import { Footer } from './footer'
 import { Header } from './header'
 
