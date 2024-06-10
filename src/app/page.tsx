@@ -23,9 +23,9 @@ const App = observer(() => {
       )}
     >
       <main className="flex flex-1 items-start justify-center gap-8">
-        {app.funnels.map((funnel, index) => (
+        {app.funnels.map((funnel) => (
           <div key={funnel.id} className={cx('flex items-start justify-center')}>
-            <FunnelPreview funnel={funnel} index={index} onOpen={app.handleFunnelClick} />
+            <FunnelPreview funnel={funnel} />
           </div>
         ))}
       </main>

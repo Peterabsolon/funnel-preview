@@ -6,7 +6,7 @@ import { Button } from '~/components/ui'
 export interface SelectOption<T extends string> {
   icon?: ReactNode
   value: T
-  label: string
+  label: ReactNode
 }
 
 export interface SelectOptionProps<T extends string> {

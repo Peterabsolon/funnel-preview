@@ -12,12 +12,10 @@ import { FunnelPreviewPage } from './FunnelPreviewPage'
 
 export interface FunnelProps {
   funnel: FunnelPreviewStore
-  index: number
   isFocused?: boolean
-  onOpen: (funnel: FunnelPreviewStore) => void
 }
 
-export const FunnelPreview = observer(({ funnel, onOpen }: FunnelProps) => {
+export const FunnelPreview = observer(({ funnel }: FunnelProps) => {
   const { page, pageContent, pagesCount, setPage } = funnel
   const { hasManyFunnels } = app
 
@@ -25,7 +23,7 @@ export const FunnelPreview = observer(({ funnel, onOpen }: FunnelProps) => {
 
   return (
     <Card
-      onClick={() => onOpen(funnel)}
+      onClick={() => app.handleFunnelClick(funnel)}
       className={cx('my-6 rounded-md p-8', {
         'border-transparent bg-transparent': !isHighlighted ?? !hasManyFunnels,
         'bg-slate-900': isHighlighted,
