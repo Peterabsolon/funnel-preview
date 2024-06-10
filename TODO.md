@@ -2,8 +2,6 @@
 
 ## v0
 
-- deploy
-- move fonts + globals to ~/assets
 - basic zoom using scale()
 - simple button select
 
@@ -15,7 +13,8 @@
 
 ## v2
 
-- Nicer control panels
+- Nicer control panels?
+- Loading state for device ala MacOS boot
 - Button hover effect
 - Android
 - Comparisons
