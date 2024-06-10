@@ -1,8 +1,7 @@
 import { observer } from 'mobx-react-lite'
 
 import { app } from '~/app/store'
-import { Dropzone, Toggle } from '~/components/fields'
-import { Range } from '~/components/fields/Range/Range'
+import { Dropzone, Range, Toggle } from '~/components/fields'
 import { Card } from '~/components/ui'
 
 import { FunnelStore } from '../FunnelPreview/FunnelPreview.store'
