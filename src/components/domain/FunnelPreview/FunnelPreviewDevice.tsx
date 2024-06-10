@@ -2,21 +2,22 @@ import { observer } from 'mobx-react-lite'
 import { ReactNode, useEffect } from 'react'
 
 import { DEVICES } from './FunnelPreview.constants'
-import { FunnelStore } from './FunnelPreview.store'
+import { FunnelPreviewStore } from './FunnelPreview.store'
 
 export interface FunnelPreviewDeviceProps {
-  funnel: FunnelStore
+  funnel: FunnelPreviewStore
   children: ReactNode
   className?: string
 }
 
 export const FunnelPreviewDevice = observer(({ funnel, children, className }: FunnelPreviewDeviceProps) => {
-  const { bgColor, device, deviceScale, deviceTheme, isDeviceVisible } = funnel
+  const { bgColor, settings } = funnel
+  const { device, deviceScale, deviceTheme, isDeviceVisible } = settings
   const { Component } = DEVICES[device]
 
   useEffect(() => {
-    funnel.setDeviceScaleBasedOnViewport()
-  }, [funnel])
+    settings.setDeviceScaleBasedOnViewport()
+  }, [settings])
 
   return (
     <div className={className} style={{ transform: `scale(${deviceScale})`, transformOrigin: 'top' }}>

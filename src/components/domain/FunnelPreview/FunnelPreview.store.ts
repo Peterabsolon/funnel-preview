@@ -3,10 +3,9 @@ import { v4 as uuid } from 'uuid'
 
 import { Funnel } from '~/types'
 
-import { DEVICES } from './FunnelPreview.constants'
-import { DeviceTheme, DeviceType } from './FunnelPreview.types'
+import { FunnelPreviewSettingsStore } from '../FunnelPreviewSettings'
 
-export class FunnelStore {
+export class FunnelPreviewStore {
   // ====================================================
   // State
   // ====================================================
@@ -23,22 +22,7 @@ export class FunnelStore {
   /**
    * The device shell to render the Funnel in
    */
-  device: DeviceType = 'iPhone14Pro'
-
-  /**
-   * The color theme to render the device UI in
-   */
-  deviceTheme: DeviceTheme = 'dark'
-
-  /**
-   * The scale to render the device model in
-   */
-  deviceScale = 1
-
-  /**
-   * Is the device frame visible?
-   */
-  isDeviceVisible = true
+  settings = new FunnelPreviewSettingsStore()
 
   /**
    * Which Funnel page is being viewed
@@ -77,27 +61,5 @@ export class FunnelStore {
 
   setPage = (page: number) => {
     this.page = page
-  }
-
-  setDevice = (device: DeviceType) => {
-    this.device = device
-  }
-
-  setDeviceScale = (scale: number) => {
-    this.deviceScale = scale
-  }
-
-  setDeviceScaleBasedOnViewport = () => {
-    const { minViewportHeightForFullScale } = DEVICES[this.device]
-    const scale = window.innerHeight / minViewportHeightForFullScale
-    this.setDeviceScale(Math.max(scale, 0.5))
-  }
-
-  toggleIsDeviceVisible = () => {
-    this.isDeviceVisible = !this.isDeviceVisible
-  }
-
-  toggleDarkTheme = () => {
-    this.deviceTheme = this.deviceTheme === 'dark' ? 'light' : 'dark'
   }
 }

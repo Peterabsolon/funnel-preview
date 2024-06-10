@@ -4,12 +4,12 @@ import { observer } from 'mobx-react-lite'
 
 import { Pagination } from '~/components/ui'
 
-import { FunnelStore } from './FunnelPreview.store'
+import { FunnelPreviewStore } from './FunnelPreview.store'
 import { FunnelPreviewDevice } from './FunnelPreviewDevice'
 import { FunnelPreviewPage } from './FunnelPreviewPage'
 
 export interface FunnelProps {
-  funnel: FunnelStore
+  funnel: FunnelPreviewStore
 }
 
 export const FunnelPreview = observer(({ funnel }: FunnelProps) => {

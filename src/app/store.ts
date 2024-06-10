@@ -2,7 +2,7 @@
 
 import { makeAutoObservable, observable } from 'mobx'
 
-import { FunnelStore } from '~/components'
+import { FunnelPreviewStore } from '~/components'
 import { FunnelSchema } from '~/types'
 
 import funnelDemo from '../../fixtures/demo.funnel.json'
@@ -19,7 +19,7 @@ export class AppStore {
   // ====================================================
   // Model
   // ====================================================
-  funnels = observable<FunnelStore>([])
+  funnels = observable<FunnelPreviewStore>([])
   parsingError?: parsingError = undefined
 
   constructor() {
@@ -39,7 +39,7 @@ export class AppStore {
   private createFunnel = (data: AnyObject) => {
     try {
       const funnel = FunnelSchema.parse(data)
-      this.funnels.push(new FunnelStore(funnel))
+      this.funnels.push(new FunnelPreviewStore(funnel))
     } catch (err) {
       console.error('Failed to parse funnel data', err)
       this.parsingError = 'schema'

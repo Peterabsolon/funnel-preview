@@ -4,7 +4,7 @@ import { Funnel } from '~/types'
 
 import funnelDemo from '../../../../fixtures/demo.funnel.json'
 import { FunnelPreview } from './FunnelPreview'
-import { FunnelStore } from './FunnelPreview.store'
+import { FunnelPreviewStore } from './FunnelPreview.store'
 
 const meta = {
   title: 'domain/FunnelPreview',
@@ -22,12 +22,12 @@ type Story = StoryObj<typeof meta>
 
 export const iPhone14ProDark: Story = {
   args: {
-    funnel: new FunnelStore(funnelDemo as Funnel),
+    funnel: new FunnelPreviewStore(funnelDemo as Funnel),
   },
 }
 
-const funnellPhone14ProLight = new FunnelStore(funnelDemo as Funnel)
-funnellPhone14ProLight.toggleDarkTheme()
+const funnellPhone14ProLight = new FunnelPreviewStore(funnelDemo as Funnel)
+funnellPhone14ProLight.settings.toggleDarkTheme()
 
 export const iPhone14ProLight: Story = {
   args: {
@@ -35,8 +35,8 @@ export const iPhone14ProLight: Story = {
   },
 }
 
-const funnelAndroidDark = new FunnelStore(funnelDemo as Funnel)
-funnelAndroidDark.setDevice('Android')
+const funnelAndroidDark = new FunnelPreviewStore(funnelDemo as Funnel)
+funnelAndroidDark.settings.setDevice('Android')
 
 export const AndroidDark: Story = {
   args: {
@@ -44,9 +44,9 @@ export const AndroidDark: Story = {
   },
 }
 
-const funnelAndroidLight = new FunnelStore(funnelDemo as Funnel)
-funnelAndroidLight.setDevice('Android')
-funnelAndroidLight.toggleDarkTheme()
+const funnelAndroidLight = new FunnelPreviewStore(funnelDemo as Funnel)
+funnelAndroidLight.settings.setDevice('Android')
+funnelAndroidLight.settings.toggleDarkTheme()
 
 export const AndroidLight: Story = {
   args: {

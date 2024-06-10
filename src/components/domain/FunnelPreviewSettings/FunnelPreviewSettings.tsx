@@ -4,14 +4,15 @@ import { app } from '~/app/store'
 import { Dropzone, Range, Toggle } from '~/components/fields'
 import { Card } from '~/components/ui'
 
-import { FunnelStore } from '../FunnelPreview/FunnelPreview.store'
+import { FunnelPreviewStore } from '../FunnelPreview/FunnelPreview.store'
+import { DEVICE_SCALE_RANGE } from './FunnelPreviewSettings.constants'
 
 export interface FunnelPreviewSettingsProps {
-  funnel: FunnelStore
+  funnel: FunnelPreviewStore
 }
 
 export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettingsProps) => {
-  const { isDeviceVisible } = funnel
+  const { settings } = funnel
   const { name } = funnel.data || {}
 
   return (
@@ -31,24 +32,28 @@ export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettings
       <Toggle
         className="mb-6"
         label="Show device frame"
-        checked={funnel.isDeviceVisible}
-        onChange={funnel.toggleIsDeviceVisible}
+        checked={settings.isDeviceVisible}
+        onChange={settings.toggleIsDeviceVisible}
       />
 
       <Range
         className="mb-6"
         label="Preview scale"
         minLabel="1/2"
-        min={0.5}
-        max={2}
+        min={DEVICE_SCALE_RANGE[0]}
+        max={DEVICE_SCALE_RANGE[1]}
         step={0.01}
-        value={funnel.deviceScale}
-        onChange={(evt) => funnel.setDeviceScale(+evt.target.value)}
+        value={settings.deviceScale}
+        onChange={(evt) => settings.setDeviceScale(+evt.target.value)}
       />
 
-      {isDeviceVisible && (
+      {settings.isDeviceVisible && (
         <>
-          <Toggle label="Use dark theme" checked={funnel.deviceTheme === 'dark'} onChange={funnel.toggleDarkTheme} />
+          <Toggle
+            label="Use dark theme"
+            checked={settings.deviceTheme === 'dark'}
+            onChange={settings.toggleDarkTheme}
+          />
         </>
       )}
     </Card>
