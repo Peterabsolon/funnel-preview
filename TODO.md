@@ -1,7 +1,19 @@
 # TODO
 
+## v1.1
+
+- move fonts + globals to ~/assets
+- basic zoom using scale()
+- simple button select
+- change bg color input
+- Simple select for None | iPhone | Android, maybe a list to "prep for more"
+- Ask ChatGPT for general advice/improvements
+- Nicer icons for next/prev
+
 ## v2
 
+- Nicer control panels
+- Button hover effect
 - Android
 - Comparisons
 - Appear effect
@@ -9,8 +21,8 @@
 
 ## V3
 
-- Show previously uploaded files, store in localStorage
 - Parse HEX colors
+- Show previously uploaded files, store in localStorage
 - Basic unit, integration test
 
 ## v4

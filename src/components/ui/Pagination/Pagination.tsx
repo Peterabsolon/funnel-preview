@@ -1,6 +1,8 @@
 import cx from 'classnames'
 import { observer } from 'mobx-react-lite'
 
+import { ArrowIcon } from '~/components/icons'
+
 import { Button } from '../Button'
 
 export interface PaginationProps {
@@ -36,16 +38,16 @@ export const Pagination = observer(({ className, page, pagesCount, setPage }: Pa
 
   return (
     <div className={cx('flex w-full items-center justify-between', className)}>
-      <Button variant="secondary" onClick={onPrevClick}>
-        {`<`} Prev
+      <Button iconLeft={<ArrowIcon className="mr-1 h-4 w-4" />} variant="secondary" onClick={onPrevClick}>
+        Prev
       </Button>
 
-      <span>
+      <span className="mx-4">
         Page {page + 1} of {pagesCount}
       </span>
 
-      <Button variant="secondary" onClick={onNextClick}>
-        Next {`>`}
+      <Button iconRight={<ArrowIcon className="ml-1 h-4 w-4 rotate-180" />} variant="secondary" onClick={onNextClick}>
+        Next
       </Button>
     </div>
   )

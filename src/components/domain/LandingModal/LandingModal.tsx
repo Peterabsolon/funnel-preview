@@ -24,14 +24,15 @@ export const LandingModal = observer(() => {
       <Dropzone
         acceptFilesPreset="JSON"
         className="mb-8"
-        label="Drop JSON files here or use the button below to select files"
+        label="Drop funnel JSON file here or use the button below to select"
+        buttonLabel="Select funnel file"
         onDropAccepted={app.loadFiles}
       />
 
       <span className="mb-4">Don&apos;t have a file?</span>
 
       <Button onClick={app.useDemoFile} className="w-full max-w-60" variant="secondary">
-        Use demo file
+        View demo
       </Button>
     </Modal>
   )

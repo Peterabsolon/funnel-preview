@@ -20,13 +20,13 @@ export const FunnelPreview = observer(({ funnel }: FunnelProps) => {
 
   return (
     <div className="py-8">
+      <Pagination className="mb-8" page={page} setPage={setPage} pagesCount={pages.length} />
+
       {pageToView && (
         <FunnelPreviewDevice bgColor={bgColor} className="mb-6" device={device} theme={deviceTheme}>
           <FunnelPreviewPage page={pageToView} />
         </FunnelPreviewDevice>
       )}
-
-      <Pagination className="mt-8" page={page} setPage={setPage} pagesCount={pages.length} />
     </div>
   )
 })

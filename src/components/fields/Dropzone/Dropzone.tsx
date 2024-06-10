@@ -40,6 +40,11 @@ export interface DropzoneProps extends RCDropzoneProps {
   className?: string
 
   /**
+   * Label element className
+   */
+  classNameLabel?: string
+
+  /**
    * Optional label
    */
   label?: ReactNode
@@ -64,6 +69,7 @@ export const Dropzone = observer(
   ({
     acceptFilesPreset,
     className,
+    classNameLabel,
     label = DEFAULT_LABEL,
     buttonLabel = DEFAULT_BUTTON_LABEL,
     iconHidden,
@@ -106,7 +112,7 @@ export const Dropzone = observer(
 
           {icon && !iconHidden && icon}
 
-          <p className="mb-12 text-center">
+          <p className={cx('mb-12 text-center', classNameLabel)}>
             {isDragActive ? (isDragAccept ? 'Drop the file here' : 'This file is not supported :(') : label}
           </p>
 

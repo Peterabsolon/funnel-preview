@@ -19,10 +19,11 @@ export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettings
 
       <Dropzone
         className="mb-6"
+        classNameLabel="mb-6"
         iconHidden
         acceptFilesPreset="JSON"
-        label="Drop new JSON file here"
-        buttonLabel="Change funnel file"
+        label="Drop new funnel JSON file here or"
+        buttonLabel="Select new funnel file"
         onDropAccepted={app.loadFiles}
       />
 

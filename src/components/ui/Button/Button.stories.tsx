@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
 
+import { ChevronIcon } from '~/components/icons'
+
 import { Button } from './Button'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
@@ -36,6 +38,20 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     variant: 'secondary',
+    label: 'Button',
+  },
+}
+
+export const IconLeft: Story = {
+  args: {
+    iconLeft: <ChevronIcon className="mr-1 h-4 w-4" />,
+    label: 'Button',
+  },
+}
+
+export const IconRight: Story = {
+  args: {
+    iconRight: <ChevronIcon className="ml-1 h-4 w-4 rotate-180" />,
     label: 'Button',
   },
 }
