@@ -2,11 +2,11 @@
 
 ## v0
 
-- more e2e tests, atleast write the cases
-- simple button select
+- approx device size based on viewport size
 
 ## v1.1
 
+- simple button select
 - change bg color input
 - Simple select for None | iPhone | Android, maybe a list to "prep for more"
 - Ask ChatGPT for general advice/improvements

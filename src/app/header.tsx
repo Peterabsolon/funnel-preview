@@ -1,5 +1,6 @@
 'use client'
 
+import cx from 'classnames'
 import { observer } from 'mobx-react-lite'
 
 import { Button, Logo } from '~/components'
@@ -12,7 +13,7 @@ export const Header = observer(() => {
   }
 
   return (
-    <header className="flex items-center justify-between border-b border-b-slate-800 p-8 py-6">
+    <header className={cx('flex items-center justify-between p-8 py-6', 'border-b border-b-slate-800 bg-slate-950')}>
       <div className="flex items-center">
         <Logo withText />
       </div>

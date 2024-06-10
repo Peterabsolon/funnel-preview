@@ -3,6 +3,7 @@ import { v4 as uuid } from 'uuid'
 
 import { Funnel } from '~/types'
 
+import { DEVICES } from './FunnelPreview.constants'
 import { DeviceTheme, DeviceType } from './FunnelPreview.types'
 
 export class FunnelStore {
@@ -84,6 +85,12 @@ export class FunnelStore {
 
   setDeviceScale = (scale: number) => {
     this.deviceScale = scale
+  }
+
+  setDeviceScaleBasedOnViewport = () => {
+    const { minViewportHeightForFullScale } = DEVICES[this.device]
+    const scale = window.innerHeight / minViewportHeightForFullScale
+    this.setDeviceScale(Math.max(scale, 0.5))
   }
 
   toggleIsDeviceVisible = () => {

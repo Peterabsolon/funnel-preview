@@ -1,19 +1,8 @@
 import { observer } from 'mobx-react-lite'
-import { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
 
-import { IPhone14ProDevice } from './devices/iPhone14Pro.device'
+import { DEVICES } from './FunnelPreview.constants'
 import { FunnelStore } from './FunnelPreview.store'
-
-export const DEVICES = {
-  iPhone14Pro: {
-    name: 'iPhone 14 Pro',
-    Component: IPhone14ProDevice,
-  },
-} as const
-
-export type DeviceType = keyof typeof DEVICES
-
-export type FunnelPreviewDeviceData = (typeof DEVICES)[DeviceType]
 
 export interface FunnelPreviewDeviceProps {
   funnel: FunnelStore
@@ -24,6 +13,10 @@ export interface FunnelPreviewDeviceProps {
 export const FunnelPreviewDevice = observer(({ funnel, children, className }: FunnelPreviewDeviceProps) => {
   const { bgColor, device, deviceScale, deviceTheme } = funnel
   const { Component } = DEVICES[device]
+
+  useEffect(() => {
+    funnel.setDeviceScaleBasedOnViewport()
+  }, [funnel])
 
   return (
     <div className={className} style={{ transform: `scale(${deviceScale})`, transformOrigin: 'top' }}>
