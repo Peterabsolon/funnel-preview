@@ -32,6 +32,10 @@ export const IPhone14ProDevice = ({ children, bgColor, theme, withFrame = true }
       className="relative bg-cover"
       style={{
         backgroundImage: deviceBgImgUrl,
+        /**
+         * These arbitrarily seeming values were surgically measured from the device background image such that
+         * all device/viewport/content sizes/ratios line up exactly.
+         */
         width: 1336 / 3,
         height: 2686 / 3,
         paddingLeft: 26.5,
@@ -47,6 +51,9 @@ export const IPhone14ProDevice = ({ children, bgColor, theme, withFrame = true }
           backgroundColor: bgColor,
           width: '100%',
           height: '100%',
+          /**
+           * This is exact screen size/ratio for iPhone 14 Pro.
+           */
           aspectRatio: 393 / 852,
         }}
       >

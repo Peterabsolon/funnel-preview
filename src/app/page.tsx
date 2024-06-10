@@ -21,7 +21,7 @@ const App = observer(() => {
           key={funnel.id}
           className={cx(
             'flex w-full flex-1 items-start justify-center',
-            // Center preview device relative to viewport on larger devices
+            // Center preview device relative to the viewport on larger devices
             `2xl:pl-[${SIDEBAR_WIDTH}px]`,
           )}
         >
@@ -31,6 +31,7 @@ const App = observer(() => {
 
       <div style={{ width: SIDEBAR_WIDTH }} className="py-6">
         {/* TODO: Use "selectedFunnel" prop that is also TODO :)  */}
+        {/* The plan was to have multiple funnel previews present on the page at the same time, for comparisons */}
         {app.funnels[0] && <FunnelPreviewSettings funnel={app.funnels[0]} />}
       </div>
     </div>
