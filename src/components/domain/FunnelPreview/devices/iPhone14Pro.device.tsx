@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import { ReactNode } from 'react'
 
 import { DeviceTheme } from '../FunnelPreview.types'
@@ -24,7 +25,7 @@ type Props = {
   withFrame?: boolean
 }
 
-export const IPhone14ProDevice = ({ children, bgColor, theme, withFrame = true }: Props) => {
+export const IPhone14ProDevice = observer(({ children, bgColor, theme, withFrame = true }: Props) => {
   const deviceBgImgUrl = withFrame ? `url("/devices/iPhone 14 Pro Space Black, ${theme} theme@3x.png")` : undefined
 
   return (
@@ -62,4 +63,4 @@ export const IPhone14ProDevice = ({ children, bgColor, theme, withFrame = true }
       </div>
     </div>
   )
-}
+})

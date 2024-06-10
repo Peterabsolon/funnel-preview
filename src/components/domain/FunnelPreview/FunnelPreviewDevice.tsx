@@ -11,7 +11,7 @@ export interface FunnelPreviewDeviceProps {
 }
 
 export const FunnelPreviewDevice = observer(({ funnel, children, className }: FunnelPreviewDeviceProps) => {
-  const { bgColor, device, deviceScale, deviceTheme } = funnel
+  const { bgColor, device, deviceScale, deviceTheme, isDeviceVisible } = funnel
   const { Component } = DEVICES[device]
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export const FunnelPreviewDevice = observer(({ funnel, children, className }: Fu
 
   return (
     <div className={className} style={{ transform: `scale(${deviceScale})`, transformOrigin: 'top' }}>
-      <Component bgColor={bgColor} theme={deviceTheme}>
+      <Component bgColor={bgColor} theme={deviceTheme} withFrame={isDeviceVisible}>
         {children}
       </Component>
     </div>

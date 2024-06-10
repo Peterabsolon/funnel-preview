@@ -36,20 +36,20 @@ export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettings
         onChange={funnel.toggleIsDeviceVisible}
       />
 
+      <Range
+        className="mb-6"
+        label="Preview scale"
+        minLabel="1/2"
+        min={0.5}
+        max={2}
+        step={0.01}
+        value={funnel.deviceScale}
+        onChange={(evt) => funnel.setDeviceScale(+evt.target.value)}
+      />
+
       {isDeviceVisible && (
         <>
-          <Range
-            className="mb-6"
-            label="Device scale"
-            minLabel="1/2"
-            min={0.5}
-            max={2}
-            step={0.01}
-            value={funnel.deviceScale}
-            onChange={(evt) => funnel.setDeviceScale(+evt.target.value)}
-          />
-
-          <Toggle label="Dark device theme" checked={funnel.deviceTheme === 'dark'} onChange={funnel.toggleDarkTheme} />
+          <Toggle label="Use dark theme" checked={funnel.deviceTheme === 'dark'} onChange={funnel.toggleDarkTheme} />
         </>
       )}
     </Card>
