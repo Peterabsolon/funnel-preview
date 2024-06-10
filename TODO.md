@@ -1,23 +1,19 @@
 # TODO
 
-## v0
-
-- approx device size based on viewport size
-
 ## v1.1
 
+- Loading state for device ala MacOS boot
+- Button hover effect
+- Comparisons
 - simple button select
-- change bg color input
-- Simple select for None | iPhone | Android, maybe a list to "prep for more"
 - Ask ChatGPT for general advice/improvements
 
 ## v2
 
+- Simple select for None | iPhone | Android, maybe a list to "prep for more"
+- change bg color input
 - Nicer control panels?
-- Loading state for device ala MacOS boot
-- Button hover effect
 - Android
-- Comparisons
 - Appear effect
 - Scroll as if on mobile device, e.g. drag-to-scroll
 
