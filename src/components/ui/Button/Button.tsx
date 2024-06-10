@@ -33,7 +33,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 /** TODO: Enable Tailwind VSCode extension setting such that intellisense works outside of JSX */
 const variants: { [key in ButtonVariant]: string } = {
   primary: 'bg-blue-500 hover:bg-blue-400',
-  secondary: 'border border-blue-400 bg-slate-900 hover:bg-blue-400',
+  secondary: 'border border-blue-400 bg-slate-900 hover:bg-blue-400 disabled:hover:bg-slate-900 disabled:opacity-60',
 }
 
 export const Button = observer(
@@ -43,6 +43,7 @@ export const Button = observer(
       className={cx(
         'flex flex-row items-center justify-center',
         'emboss-effect relative rounded-md px-8 py-2 font-medium drop-shadow-2xl transition-colors',
+        'disabled:cursor-not-allowed',
         { 'pl-6': iconLeft, 'pr-6': iconRight },
         variants[variant],
         className,

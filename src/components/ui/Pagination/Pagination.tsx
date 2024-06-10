@@ -28,6 +28,9 @@ export interface PaginationProps {
 }
 
 export const Pagination = observer(({ className, page, pagesCount, setPage }: PaginationProps) => {
+  const isFirstPage = page === 0
+  const isLastPage = page === pagesCount - 1
+
   const onPrevClick = () => {
     setPage(Math.max(0, page - 1))
   }
@@ -38,7 +41,12 @@ export const Pagination = observer(({ className, page, pagesCount, setPage }: Pa
 
   return (
     <div className={cx('flex w-full items-center justify-between', className)}>
-      <Button iconLeft={<ArrowIcon className="mr-1 h-4 w-4" />} variant="secondary" onClick={onPrevClick}>
+      <Button
+        disabled={isFirstPage}
+        iconLeft={<ArrowIcon className="mr-1 h-4 w-4" />}
+        variant="secondary"
+        onClick={onPrevClick}
+      >
         Prev
       </Button>
 
@@ -46,7 +54,12 @@ export const Pagination = observer(({ className, page, pagesCount, setPage }: Pa
         Page {page + 1} of {pagesCount}
       </span>
 
-      <Button iconRight={<ArrowIcon className="ml-1 h-4 w-4 rotate-180" />} variant="secondary" onClick={onNextClick}>
+      <Button
+        disabled={isLastPage}
+        iconRight={<ArrowIcon className="ml-1 h-4 w-4 rotate-180" />}
+        variant="secondary"
+        onClick={onNextClick}
+      >
         Next
       </Button>
     </div>
