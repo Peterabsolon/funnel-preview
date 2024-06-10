@@ -11,7 +11,7 @@ export class FunnelPreviewSettingsStore {
   /**
    * The device shell to render the Funnel in
    */
-  device: DeviceType = 'iPhone14Pro'
+  device: DeviceType = 'Android'
 
   /**
    * The color theme to render the device UI in

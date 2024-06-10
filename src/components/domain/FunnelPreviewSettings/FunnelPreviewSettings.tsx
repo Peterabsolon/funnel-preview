@@ -1,10 +1,12 @@
 import { observer } from 'mobx-react-lite'
 
 import { app } from '~/app/store'
-import { Dropzone, Range, Toggle } from '~/components/fields'
+import { Dropzone, Range, Select, Toggle } from '~/components/fields'
 import { Card } from '~/components/ui'
 
+import { DEVICES } from '../FunnelPreview/FunnelPreview.constants'
 import { FunnelPreviewStore } from '../FunnelPreview/FunnelPreview.store'
+import { DeviceType } from '../FunnelPreview/FunnelPreview.types'
 import { DEVICE_SCALE_RANGE } from './FunnelPreviewSettings.constants'
 
 export interface FunnelPreviewSettingsProps {
@@ -29,13 +31,6 @@ export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettings
         onDropAccepted={app.loadFiles}
       />
 
-      <Toggle
-        className="mb-6"
-        label="Show device frame"
-        checked={settings.isDeviceVisible}
-        onChange={settings.toggleIsDeviceVisible}
-      />
-
       <Range
         className="mb-6"
         label="Preview scale"
@@ -45,6 +40,23 @@ export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettings
         step={0.01}
         value={settings.deviceScale}
         onChange={(evt) => settings.setDeviceScale(+evt.target.value)}
+      />
+
+      <Toggle
+        className="mb-6"
+        label="Show device frame"
+        checked={settings.isDeviceVisible}
+        onChange={settings.toggleIsDeviceVisible}
+      />
+
+      <Select<DeviceType>
+        className="mb-6"
+        value={settings.device}
+        onChange={settings.setDevice}
+        options={Object.entries(DEVICES).map(([key, device]) => ({
+          label: device.name,
+          value: key as DeviceType,
+        }))}
       />
 
       {settings.isDeviceVisible && (

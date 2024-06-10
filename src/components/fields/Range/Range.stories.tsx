@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Range } from './Range'
 
 const meta = {
-  title: 'ui/Range',
+  title: 'fields/Range',
   component: Range,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],
