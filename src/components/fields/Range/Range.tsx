@@ -26,7 +26,7 @@ export const Range = observer(
     return (
       <div className={cx('w-full', className)}>
         {label && (
-          <label htmlFor="default-range" className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+          <label htmlFor="default-range" className="mb-2 block text-sm font-medium">
             {label}
           </label>
         )}

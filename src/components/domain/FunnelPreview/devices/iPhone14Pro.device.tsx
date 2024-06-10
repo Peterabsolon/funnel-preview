@@ -17,18 +17,27 @@ type Props = {
    * Device theme
    */
   theme: DeviceTheme
+
+  /**
+   * Should show device frame?
+   */
+  withFrame?: boolean
 }
 
-export const IPhone14ProDevice = ({ children, bgColor, theme }: Props) => {
+export const IPhone14ProDevice = ({ children, bgColor, theme, withFrame = true }: Props) => {
+  const deviceBgImgUrl = withFrame ? `url("/devices/iPhone 14 Pro Space Black, ${theme} theme@3x.png")` : undefined
+
   return (
     <div
       className="relative bg-cover"
       style={{
-        backgroundImage: `url("/devices/iPhone 14 Pro Space Black, ${theme} theme@3x.png")`,
+        backgroundImage: deviceBgImgUrl,
         width: 1336 / 3,
         height: 2686 / 3,
-        /** Viewport paddings. Had to use half a px to get things aligned exactly with rasterized images */
-        padding: '81px 26px 156px 26.5px',
+        paddingLeft: 26.5,
+        paddingRight: 26,
+        paddingTop: withFrame ? 81 : 0,
+        paddingBottom: withFrame ? 156 : 237,
       }}
     >
       {/* The viewport */}

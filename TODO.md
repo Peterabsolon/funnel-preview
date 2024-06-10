@@ -2,7 +2,7 @@
 
 ## v0
 
-- basic zoom using scale()
+- more e2e tests, atleast write the cases
 - simple button select
 
 ## v1.1
