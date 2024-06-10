@@ -12,6 +12,7 @@ export interface FunnelPreviewSettingsProps {
 }
 
 export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettingsProps) => {
+  const { isDeviceVisible } = funnel
   const { name } = funnel.data || {}
 
   return (
@@ -28,18 +29,29 @@ export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettings
         onDropAccepted={app.loadFiles}
       />
 
-      <Range
+      <Toggle
         className="mb-6"
-        label="Device scale"
-        minLabel="1/2"
-        min={0.5}
-        max={2}
-        step={0.01}
-        value={funnel.deviceScale}
-        onChange={(evt) => funnel.setDeviceScale(+evt.target.value)}
+        label="Show device frame"
+        checked={funnel.isDeviceVisible}
+        onChange={funnel.toggleIsDeviceVisible}
       />
 
-      <Toggle label="Dark device theme" checked={funnel.deviceTheme === 'dark'} onChange={funnel.toggleDarkTheme} />
+      {isDeviceVisible && (
+        <>
+          <Range
+            className="mb-6"
+            label="Device scale"
+            minLabel="1/2"
+            min={0.5}
+            max={2}
+            step={0.01}
+            value={funnel.deviceScale}
+            onChange={(evt) => funnel.setDeviceScale(+evt.target.value)}
+          />
+
+          <Toggle label="Dark device theme" checked={funnel.deviceTheme === 'dark'} onChange={funnel.toggleDarkTheme} />
+        </>
+      )}
     </Card>
   )
 })

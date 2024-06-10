@@ -35,6 +35,11 @@ export class FunnelStore {
   deviceScale = 1
 
   /**
+   * Is the device frame visible?
+   */
+  isDeviceVisible = true
+
+  /**
    * Which Funnel page is being viewed
    */
   page = 0
@@ -79,6 +84,10 @@ export class FunnelStore {
 
   setDeviceScale = (scale: number) => {
     this.deviceScale = scale
+  }
+
+  toggleIsDeviceVisible = () => {
+    this.isDeviceVisible = !this.isDeviceVisible
   }
 
   toggleDarkTheme = () => {
