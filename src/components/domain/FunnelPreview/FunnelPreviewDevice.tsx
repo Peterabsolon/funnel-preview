@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import { ReactNode } from 'react'
 
 import { IPhone14ProDevice } from './devices/iPhone14Pro.device'
-import { DeviceTheme } from './FunnelPreview.types'
+import { FunnelStore } from './FunnelPreview.store'
 
 export const DEVICES = {
   iPhone14Pro: {
@@ -16,24 +16,20 @@ export type DeviceType = keyof typeof DEVICES
 export type FunnelPreviewDeviceData = (typeof DEVICES)[DeviceType]
 
 export interface FunnelPreviewDeviceProps {
-  bgColor?: string
+  funnel: FunnelStore
   children: ReactNode
   className?: string
-  device: DeviceType
-  theme: DeviceTheme
-  scale: number
 }
 
-export const FunnelPreviewDevice = observer(
-  ({ bgColor, children, className, device, scale, theme }: FunnelPreviewDeviceProps) => {
-    const { Component } = DEVICES[device]
+export const FunnelPreviewDevice = observer(({ funnel, children, className }: FunnelPreviewDeviceProps) => {
+  const { bgColor, device, deviceScale, deviceTheme } = funnel
+  const { Component } = DEVICES[device]
 
-    return (
-      <div className={className} style={{ transform: `scale(${scale})`, transformOrigin: 'top' }}>
-        <Component bgColor={bgColor} theme={theme}>
-          {children}
-        </Component>
-      </div>
-    )
-  },
-)
+  return (
+    <div className={className} style={{ transform: `scale(${deviceScale})`, transformOrigin: 'top' }}>
+      <Component bgColor={bgColor} theme={deviceTheme}>
+        {children}
+      </Component>
+    </div>
+  )
+})

@@ -48,6 +48,21 @@ export class FunnelStore {
   }
 
   // ====================================================
+  // Computed
+  // ====================================================
+  get pagesCount() {
+    return this.data?.pages.length ?? 0
+  }
+
+  get pageContent() {
+    return this.data ? this.data.pages[this.page] : undefined
+  }
+
+  get bgColor() {
+    return this.data?.bgColor ?? 'bg-slate-800'
+  }
+
+  // ====================================================
   // Actions
   // ====================================================
   setData = (data: Funnel) => {
