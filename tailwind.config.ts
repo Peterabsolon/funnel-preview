@@ -1,10 +1,12 @@
 import type { Config } from 'tailwindcss'
 
-// :root {
-//   --steel-blue: #007aff;
-//   --hover-blue: #0062cc;
-//   --dark-grey: #333
-// }
+const PALETTE_BLUE = {
+  100: '#72DCFF',
+  200: '#49C2FF',
+  300: '#20A0FF',
+  400: '#007aff',
+  500: '#005BE9',
+}
 
 const config: Config = {
   content: [
@@ -15,13 +17,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        blue: {
-          100: '#72DCFF',
-          200: '#49C2FF',
-          300: '#20A0FF',
-          400: '#007aff',
-          500: '#005BE9',
-        },
+        blue: PALETTE_BLUE,
       },
 
       backgroundImage: {
@@ -30,6 +26,5 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
 }
 export default config
