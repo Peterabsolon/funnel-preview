@@ -2,8 +2,6 @@ import cx from 'classnames'
 import { observer } from 'mobx-react-lite'
 import { ReactNode } from 'react'
 
-import { Card } from '../Card'
-
 export type AlertLevel = 'info' | 'error'
 
 export interface AlertProps {
@@ -31,8 +29,14 @@ export interface AlertProps {
 
 export const Alert = observer(({ className, children }: AlertProps) => {
   return (
-    <Card className={cx('emboss-effect w-full border border-red-800 bg-red-500 p-6 text-white', className)}>
+    <div
+      className={cx(
+        'relative w-full',
+        'emboss-effect rounded-xl border border-red-600 bg-red-500 p-6 text-white drop-shadow-2xl',
+        className,
+      )}
+    >
       {children}
-    </Card>
+    </div>
   )
 })

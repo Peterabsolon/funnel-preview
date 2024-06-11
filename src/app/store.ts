@@ -43,9 +43,11 @@ export class AppStore {
   // Private
   // ====================================================
   /**
-   * Parses file into JSON.
+   * Parses file into format we expect.
    */
   private parseFile = async (file: File): Promise<Funnel> => {
+    this.parsingError = undefined
+
     const text = await file.text()
 
     let data: AnyObject = {}
@@ -91,8 +93,12 @@ export class AppStore {
    * Dropzone component already ensures we get .json files only.
    */
   handleLoadFile = async (file: File) => {
-    const data = await this.parseFile(file)
-    this.createFunnel(data)
+    try {
+      const data = await this.parseFile(file)
+      this.createFunnel(data)
+    } catch (err) {
+      // handled already
+    }
   }
 
   /**
@@ -122,8 +128,13 @@ export class AppStore {
 
   handleReplaceOpenedFunnelFile = async (files: File[]) => {
     if (!this.funnelOpened || !files[0]) return
-    const data = await this.parseFile(files[0])
-    this.funnelOpened.setData(data)
+
+    try {
+      const data = await this.parseFile(files[0])
+      this.funnelOpened.setData(data)
+    } catch (err) {
+      // handled already
+    }
   }
 
   /**
