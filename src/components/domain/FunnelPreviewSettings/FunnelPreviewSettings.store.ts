@@ -1,4 +1,6 @@
-import { makeAutoObservable } from 'mobx'
+import debounce from 'lodash.debounce'
+import { makeAutoObservable, reaction } from 'mobx'
+import { createRef } from 'react'
 
 import type { AppStore } from '~/app/store'
 
@@ -30,12 +32,29 @@ export class FunnelPreviewSettingsStore {
   deviceScale = 1
 
   /**
+   * Reference to device root div element
+   */
+  deviceRef = createRef<HTMLDivElement>()
+
+  /**
+   * The actual render width of the preview device after scaling
+   */
+  renderedDeviceWidth?: number = undefined
+
+  /**
    * Is the device frame visible?
    */
   isDeviceVisible = true
 
   constructor(private readonly app: AppStore) {
     makeAutoObservable(this)
+
+    this.setRenderedDeviceWidth = debounce(this.setRenderedDeviceWidth, 250)
+
+    reaction(
+      () => this.deviceScale,
+      () => this.setRenderedDeviceWidth(),
+    )
   }
 
   // ====================================================
@@ -47,6 +66,14 @@ export class FunnelPreviewSettingsStore {
 
   setDeviceScale = (scale: number) => {
     this.deviceScale = scale
+  }
+
+  setRenderedDeviceWidth = () => {
+    console.log('yo')
+    const element = this.deviceRef.current
+    if (!element) return
+    this.renderedDeviceWidth = element.getBoundingClientRect().width
+    console.log('this.renderedDeviceWidth', this.renderedDeviceWidth)
   }
 
   setDeviceScaleBasedOnViewport = () => {

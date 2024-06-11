@@ -9,8 +9,6 @@ export interface FieldProps {
 }
 
 export const Field = ({ className, children, name, label }: FieldProps) => {
-  console.log('name', name)
-
   return (
     <div className={cx('flex w-full flex-col', className)}>
       <label className="mb-3 block text-sm font-medium" htmlFor={name}>

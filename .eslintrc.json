@@ -23,6 +23,8 @@
 
     "@typescript-eslint/switch-exhaustiveness-check": "error",
 
-    "@next/next/no-img-element": "off" // nice try NextJS sales team
+    "@next/next/no-img-element": "off", // nice try NextJS sales team
+
+    "react/display-name": "off"
   }
 }

@@ -23,7 +23,7 @@ const App = observer(() => {
         })}
       >
         {app.funnels.map((funnel) => (
-          <div key={funnel.id} className={cx('mr-8 flex-none last:mr-0')}>
+          <div key={funnel.id} className="mr-8 flex-none last:mr-0">
             <FunnelPreview funnel={funnel} />
           </div>
         ))}

@@ -21,10 +21,12 @@ export const FunnelPreview = observer(({ funnel }: FunnelProps) => {
   // only use highlights when we have multiple funnels
   const isHighlighted = funnel === funnelOpened && hasManyFunnels
   const isTransparent = !isHighlighted ?? !hasManyFunnels
+  const width = Math.max((funnel.settings.renderedDeviceWidth ?? 0) + 160, 520)
 
   return (
     <Card
       onClick={() => app.handleToggleFunnelSettings(funnel)}
+      style={{ width }}
       className={cx('rounded-md', {
         'bg-slate-900': isHighlighted,
         'bg-transparent': isTransparent,

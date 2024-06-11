@@ -12,16 +12,14 @@ export interface FunnelPreviewDeviceProps {
 
 export const FunnelPreviewDevice = observer(({ funnel, children, className }: FunnelPreviewDeviceProps) => {
   const { bgColor, settings } = funnel
-  const { device, deviceScale, deviceTheme, isDeviceVisible } = settings
+  const { device, deviceScale, deviceTheme, deviceRef, isDeviceVisible } = settings
   const { Component } = DEVICES[device]
 
-  useEffect(() => {
-    settings.setDeviceScaleBasedOnViewport()
-  }, [settings])
+  useEffect(() => settings.setDeviceScaleBasedOnViewport(), [settings])
 
   return (
     <div className={className} style={{ transform: `scale(${deviceScale})`, transformOrigin: 'top' }}>
-      <Component bgColor={bgColor} theme={deviceTheme} withFrame={isDeviceVisible}>
+      <Component ref={deviceRef} bgColor={bgColor} theme={deviceTheme} withFrame={isDeviceVisible}>
         {children}
       </Component>
     </div>
