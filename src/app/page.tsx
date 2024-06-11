@@ -15,10 +15,10 @@ const App = observer(() => {
   }
 
   return (
-    <div className={cx('flex flex-1 items-start justify-between', 'max-w-full gap-8 py-8')}>
-      <main className="flex flex-1 flex-row items-start justify-center gap-8 overflow-x-auto">
+    <div className="flex max-w-full flex-1 overflow-hidden py-8">
+      <main className="mr-8 flex flex-1 flex-row items-start justify-center overflow-x-auto">
         {app.funnels.map((funnel) => (
-          <div key={funnel.id} className={cx('flex-none items-start justify-center')}>
+          <div key={funnel.id} className={cx('mr-8 flex-none last:mr-0')}>
             <FunnelPreview funnel={funnel} />
           </div>
         ))}
