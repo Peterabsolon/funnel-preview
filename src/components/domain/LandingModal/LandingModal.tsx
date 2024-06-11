@@ -39,7 +39,7 @@ export const LandingModal = observer(({ title, onClose, forAddNewFunnel }: Landi
         className="mb-8"
         label="Drop funnel JSON file here or use the button below to select"
         buttonLabel="Select funnel file"
-        onDropAccepted={app.handleDropFiles}
+        onDropAccepted={app.handleLoadFiles}
       />
 
       <span className="mb-4">Don&apos;t have a file?</span>

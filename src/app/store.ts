@@ -108,20 +108,6 @@ export class AppStore {
     for (const file of files) {
       await this.handleLoadFile(file)
     }
-  }
-
-  handleLoadMoreFiles = async (files: File[]) => {
-    for (const file of files) {
-      await this.handleLoadFile(file)
-    }
-  }
-
-  handleDropFiles = async (files: File[]) => {
-    if (!this.funnels.length) {
-      await this.handleLoadFiles(files)
-    } else {
-      await this.handleLoadMoreFiles(files)
-    }
 
     this.isLandingModalOpened = false
   }
