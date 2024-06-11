@@ -16,6 +16,21 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation: {
+        appear: 'fadeIn .3s ease, nudgeUp .5s ease',
+      },
+
+      keyframes: {
+        fadeIn: {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
+        nudgeUp: {
+          '0%': { transform: 'translateY(15px)' },
+          '100%': { transform: 'translateY(0px)' },
+        },
+      },
+
       colors: {
         blue: PALETTE_BLUE,
       },
