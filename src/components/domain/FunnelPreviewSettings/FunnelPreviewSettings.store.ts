@@ -69,11 +69,9 @@ export class FunnelPreviewSettingsStore {
   }
 
   setRenderedDeviceWidth = () => {
-    console.log('yo')
     const element = this.deviceRef.current
     if (!element) return
     this.renderedDeviceWidth = element.getBoundingClientRect().width
-    console.log('this.renderedDeviceWidth', this.renderedDeviceWidth)
   }
 
   setDeviceScaleBasedOnViewport = () => {
