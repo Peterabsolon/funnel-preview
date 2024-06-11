@@ -8,7 +8,7 @@ export interface ModalProps {
   withBackdrop?: boolean
 }
 
-export const Modal = observer(({ children, withBackdrop = true }: ModalProps) => {
+export const Modal = observer(({ children, withBackdrop = false }: ModalProps) => {
   return (
     <div className="fixed inset-0 flex flex-1 items-center justify-center overflow-auto">
       {withBackdrop && <div className="fixed inset-0 z-10 bg-black opacity-80" />}
