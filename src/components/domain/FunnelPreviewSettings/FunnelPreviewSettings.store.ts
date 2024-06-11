@@ -2,9 +2,8 @@ import { makeAutoObservable } from 'mobx'
 
 import type { AppStore } from '~/app/store'
 
-import { DEVICES } from '../FunnelPreview/FunnelPreview.constants'
+import { DEVICE_SCALE_RANGE, DEVICES } from '../FunnelPreview/FunnelPreview.constants'
 import { DeviceTheme, DeviceType } from '../FunnelPreview/FunnelPreview.types'
-import { DEVICE_SCALE_RANGE } from './FunnelPreviewSettings.constants'
 
 export class FunnelPreviewSettingsStore {
   // ====================================================
@@ -68,7 +67,7 @@ export class FunnelPreviewSettingsStore {
 
   toggleIsDeviceVisible = () => {
     this.isDeviceVisible = !this.isDeviceVisible
-    this.setDeviceScale(1)
+    this.setDeviceScaleBasedOnViewport()
   }
 
   toggleDarkTheme = () => {

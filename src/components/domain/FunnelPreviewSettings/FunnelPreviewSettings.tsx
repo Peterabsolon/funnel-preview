@@ -5,10 +5,9 @@ import { Dropzone, Range, Select, Toggle } from '~/components/fields'
 import { TrashIcon, ZoomIcon } from '~/components/icons'
 import { Button, Card } from '~/components/ui'
 
-import { DEVICES } from '../FunnelPreview/FunnelPreview.constants'
+import { DEVICE_SCALE_RANGE, DEVICES } from '../FunnelPreview/FunnelPreview.constants'
 import { FunnelPreviewStore } from '../FunnelPreview/FunnelPreview.store'
 import { DeviceType } from '../FunnelPreview/FunnelPreview.types'
-import { DEVICE_SCALE_RANGE } from './FunnelPreviewSettings.constants'
 
 export interface FunnelPreviewSettingsProps {
   funnel: FunnelPreviewStore

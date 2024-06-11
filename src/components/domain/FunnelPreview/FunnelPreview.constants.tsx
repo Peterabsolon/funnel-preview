@@ -2,6 +2,8 @@ import { AndroidDevice, IPhone14ProDevice } from './devices'
 
 export const DEVICE_THEMES = ['light', 'dark'] as const
 
+export const DEVICE_SCALE_RANGE = [0.5, 2] as const
+
 export const DEVICES = {
   iPhone14Pro: {
     name: (
