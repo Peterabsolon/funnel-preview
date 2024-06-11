@@ -52,7 +52,7 @@ const variantsHover: { [key in ButtonVariant]: string } = {
 
 export const Button = observer(
   ({ children, label, variant = 'primary', variantHover, className, iconLeft, iconRight, ...props }: ButtonProps) => {
-    const hoverVariant = variantHover ? variantsHover[variantHover] : undefined
+    const hoverVariant = variantsHover[variantHover || variant]
 
     return (
       <button
