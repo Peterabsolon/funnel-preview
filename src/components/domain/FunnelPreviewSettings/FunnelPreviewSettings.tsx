@@ -20,8 +20,6 @@ export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettings
     <Card>
       <h2 className="mb-6 text-center text-xl">{name}</h2>
 
-      <button onClick={() => funnel.settings.setRenderedDeviceWidth()}>Ahoj</button>
-
       {app.parsingErrorMessage && (
         <Alert className="mb-8" level="error">
           {app.parsingErrorMessage}
