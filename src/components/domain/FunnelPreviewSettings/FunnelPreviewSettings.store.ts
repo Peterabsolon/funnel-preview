@@ -50,7 +50,7 @@ export class FunnelPreviewSettingsStore {
 
   setDeviceScaleBasedOnViewport = () => {
     const { minViewportHeightForFullScale } = DEVICES[this.device]
-    const scale = window.innerHeight / minViewportHeightForFullScale
+    const scale = (window.innerHeight / minViewportHeightForFullScale) * 0.95
     this.setDeviceScale(Math.max(scale, DEVICE_SCALE_RANGE[0]))
   }
 

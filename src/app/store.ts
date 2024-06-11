@@ -6,14 +6,7 @@ import { FunnelPreviewStore } from '~/components'
 import { FunnelSchema } from '~/types'
 
 import funnelDemo from '../../fixtures/demo.funnel.json'
-
-const PARSING_ERROR = ['file', 'schema'] as const
-type parsingError = (typeof PARSING_ERROR)[number]
-
-const PARSING_ERROR_MESSAGES: { [key in parsingError]: string } = {
-  file: 'Failed to parse file as JSON.',
-  schema: 'The provided JSON file has invalid data shape.',
-}
+import { PARSING_ERROR_MESSAGES, ParsingError } from './store.constants'
 
 export class AppStore {
   // ====================================================
@@ -22,7 +15,7 @@ export class AppStore {
   funnels = observable<FunnelPreviewStore>([])
   funnelOpened: FunnelPreviewStore | undefined = undefined
 
-  parsingError?: parsingError = undefined
+  parsingError?: ParsingError = undefined
   isLandingModalOpened = false
 
   constructor() {
@@ -112,8 +105,8 @@ export class AppStore {
   /**
    * Opens/closes the funnel settings.
    */
-  handleFunnelClick = (funnel: FunnelPreviewStore) => {
-    // Only enable closing the panel when multiple funnels opened
+  handleToggleFunnelSettings = (funnel: FunnelPreviewStore) => {
+    // Only enable closing the settings panel when multiple funnels present
     if (this.funnelOpened === funnel && this.hasManyFunnels) {
       this.funnelOpened = undefined
       return
@@ -127,7 +120,9 @@ export class AppStore {
    */
   handleReset = () => {
     this.funnels.clear()
+    this.funnelOpened = undefined
     this.parsingError = undefined
+    this.isLandingModalOpened = false
   }
 }
 

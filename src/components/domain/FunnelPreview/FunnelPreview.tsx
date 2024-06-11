@@ -19,14 +19,16 @@ export const FunnelPreview = observer(({ funnel }: FunnelProps) => {
   const { page, pageContent, pagesCount, setPage } = funnel
   const { hasManyFunnels } = app
 
+  // only use highlights when we have multiple funnels
   const isHighlighted = funnel === app.funnelOpened && hasManyFunnels
+  const isTransparent = !isHighlighted ?? !hasManyFunnels
 
   return (
     <Card
-      onClick={() => app.handleFunnelClick(funnel)}
-      className={cx('my-6 rounded-md p-8', {
-        'border-transparent bg-transparent': !isHighlighted ?? !hasManyFunnels,
+      onClick={() => app.handleToggleFunnelSettings(funnel)}
+      className={cx('rounded-md', {
         'bg-slate-900': isHighlighted,
+        'bg-transparent': isTransparent,
         'cursor-pointer hover:bg-slate-900': hasManyFunnels,
       })}
     >
