@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 import { app } from '~/app/store'
 import { Dropzone, Range, Select, Toggle } from '~/components/fields'
 import { TrashIcon, ZoomIcon } from '~/components/icons'
-import { Button, Card } from '~/components/ui'
+import { Alert, Button, Card } from '~/components/ui'
 
 import { DEVICE_SCALE_RANGE, DEVICES } from '../FunnelPreview/FunnelPreview.constants'
 import { FunnelPreviewStore } from '../FunnelPreview/FunnelPreview.store'
@@ -20,6 +20,12 @@ export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettings
   return (
     <Card>
       <h2 className="mb-6 text-center text-xl">{name}</h2>
+
+      {app.parsingErrorMessage && (
+        <Alert className="mb-8" level="error">
+          {app.parsingErrorMessage}
+        </Alert>
+      )}
 
       <Dropzone
         name="file"
