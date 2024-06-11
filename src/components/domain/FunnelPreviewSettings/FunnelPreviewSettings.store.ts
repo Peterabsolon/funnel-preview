@@ -39,7 +39,7 @@ export class FunnelPreviewSettingsStore {
   /**
    * The actual render width of the preview device after scaling
    */
-  renderedDeviceWidth?: number = undefined
+  renderedDeviceDimensions?: [number, number] = undefined
 
   /**
    * Is the device frame visible?
@@ -71,7 +71,8 @@ export class FunnelPreviewSettingsStore {
   setRenderedDeviceWidth = () => {
     const element = this.deviceRef.current
     if (!element) return
-    this.renderedDeviceWidth = element.getBoundingClientRect().width
+    const { width, height } = element.getBoundingClientRect()
+    this.renderedDeviceDimensions = [width, height]
   }
 
   setDeviceScaleBasedOnViewport = () => {

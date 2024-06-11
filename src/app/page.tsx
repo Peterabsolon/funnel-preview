@@ -29,7 +29,7 @@ const App = observer(() => {
         ))}
       </main>
 
-      <div className={`flex-shrink-0 flex-basis-[${SIDEBAR_WIDTH_PX}px]`}>
+      <div style={{ width: SIDEBAR_WIDTH_PX }} className="flex-shrink-0">
         {app.funnelOpened && <FunnelPreviewSettings funnel={app.funnelOpened} />}
       </div>
 
