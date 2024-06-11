@@ -53,7 +53,7 @@ export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettings
         onClick={settings.setDeviceScaleBasedOnViewport}
         iconLeft={<ZoomIcon className="mr-2 size-4" />}
       >
-        Set scale automatically
+        Auto scale
       </Button>
 
       <Select<DeviceType>
