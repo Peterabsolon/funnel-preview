@@ -44,7 +44,7 @@ export const AndroidDevice = observer(
              */
             width: 1428 / 3,
             height: 2810 / 3,
-            paddingLeft: 29,
+            paddingLeft: 30,
             paddingRight: 35,
             paddingTop: withFrame ? 197 : 0,
             paddingBottom: withFrame ? 108 : 317,

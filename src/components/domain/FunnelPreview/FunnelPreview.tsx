@@ -5,9 +5,12 @@ import { observer } from 'mobx-react-lite'
 
 import { Card, Pagination } from '~/components/ui'
 
+import { DEVICES } from './FunnelPreview.constants'
 import { FunnelPreviewStore } from './FunnelPreview.store'
 import { FunnelPreviewDevice } from './FunnelPreviewDevice'
 import { FunnelPreviewPage } from './FunnelPreviewPage'
+
+const REM_PX = 16
 
 export interface FunnelProps {
   funnel: FunnelPreviewStore
@@ -21,12 +24,17 @@ export const FunnelPreview = observer(({ funnel }: FunnelProps) => {
   // only use highlights when we have multiple funnels
   const isHighlighted = funnel === funnelOpened && hasManyFunnels
   const isTransparent = !isHighlighted ?? !hasManyFunnels
-  const width = Math.max((funnel.settings.renderedDeviceWidth ?? 0) + 160, 520)
+
+  const minWidth = DEVICES[funnel.settings.device].minPanelWidth
+  const width = Math.max((funnel.settings.renderedDeviceWidth ?? 0) + 64, minWidth)
 
   return (
     <Card
       onClick={() => app.handleToggleFunnelSettings(funnel)}
-      style={{ width }}
+      style={{
+        width,
+        maxHeight: `calc(100vh - ${10 * REM_PX})px`,
+      }}
       className={cx('rounded-md', {
         'bg-slate-900': isHighlighted,
         'bg-transparent': isTransparent,
