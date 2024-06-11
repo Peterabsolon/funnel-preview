@@ -14,6 +14,7 @@ export const DEVICES = {
     Component: IPhone14ProDevice,
     minViewportHeightForFullScale: 1280,
     minPanelWidth: 520,
+    minPanelHeight: 720,
   },
 
   Android: {
@@ -25,6 +26,7 @@ export const DEVICES = {
     Component: AndroidDevice,
     minViewportHeightForFullScale: 1280,
     minPanelWidth: 540,
+    minPanelHeight: 720,
   },
 } as const
 

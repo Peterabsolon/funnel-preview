@@ -62,6 +62,7 @@ export class FunnelPreviewSettingsStore {
   // ====================================================
   setDevice = (device: DeviceType) => {
     this.device = device
+    this.setRenderedDeviceWidth()
   }
 
   setDeviceScale = (scale: number) => {

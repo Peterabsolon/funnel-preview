@@ -23,13 +23,14 @@ export const FunnelPreviewCard = observer(({ funnel, onClick, children }: Funnel
   const isHighlighted = funnel === funnelOpened && hasManyFunnels
   const isTransparent = !isHighlighted ?? !hasManyFunnels
 
-  const minWidth = DEVICES[funnel.settings.device].minPanelWidth
+  const { minPanelWidth, minPanelHeight } = DEVICES[funnel.settings.device]
+  const [deviceWidth, deviceHeight] = funnel.settings.renderedDeviceDimensions ?? [0, 0]
 
   const paddingX = 4 * REM_PX
-  const width = Math.max((funnel.settings.renderedDeviceDimensions?.[0] ?? 0) + paddingX, minWidth)
+  const width = Math.max(deviceWidth + paddingX, minPanelWidth)
 
   const paddingY = (app.hasManyFunnels ? 12 : 10) * REM_PX
-  const height = (funnel.settings.renderedDeviceDimensions?.[1] ?? 0) + paddingY
+  const height = Math.max(deviceHeight + paddingY, minPanelHeight + paddingY)
 
   return (
     <Card

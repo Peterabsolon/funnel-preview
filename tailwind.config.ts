@@ -17,7 +17,7 @@ const config: Config = {
   theme: {
     extend: {
       animation: {
-        appear: 'fadeIn .3s ease, nudgeUp .5s ease',
+        appear: 'fadeIn .3s ease, nudgeUp .3s ease',
       },
 
       keyframes: {

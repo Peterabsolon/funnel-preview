@@ -163,6 +163,7 @@ export class AppStore {
    */
   handleRemoveFunnel = (funnel: FunnelPreviewStore) => {
     this.funnels.remove(funnel)
+    this.funnelOpened = undefined
   }
 
   /**

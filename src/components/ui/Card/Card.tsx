@@ -3,6 +3,14 @@ import { observer } from 'mobx-react-lite'
 import { CSSProperties, ReactNode } from 'react'
 
 export interface CardProps {
+  /**
+   * Should animate appearance
+   */
+  animate?: boolean
+
+  /**
+   * Root element onClick handler
+   */
   onClick?: () => void
 
   /**
@@ -21,10 +29,14 @@ export interface CardProps {
   children: ReactNode
 }
 
-export const Card = observer(({ children, className, onClick, style }: CardProps) => {
+export const Card = observer(({ animate = true, children, className, onClick, style }: CardProps) => {
   return (
     <div
-      className={cx('emboss-effect relative animate-appear rounded-xl bg-slate-900 p-8 drop-shadow-2xl', className)}
+      className={cx(
+        'emboss-effect relative rounded-xl bg-slate-900 p-8 drop-shadow-2xl transition-colors',
+        { 'animate-appear': animate },
+        className,
+      )}
       onClick={onClick}
       style={style}
     >
