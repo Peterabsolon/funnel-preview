@@ -16,7 +16,12 @@ const App = observer(() => {
 
   return (
     <div className="flex max-w-full flex-1 overflow-hidden py-8">
-      <main className="mr-8 flex flex-1 flex-row items-start justify-center overflow-x-auto">
+      <main
+        className={cx('mr-8 flex flex-1 flex-row items-start overflow-x-auto', {
+          'justify-center': !app.hasManyFunnels,
+          'justify-start': app.hasManyFunnels,
+        })}
+      >
         {app.funnels.map((funnel) => (
           <div key={funnel.id} className={cx('mr-8 flex-none last:mr-0')}>
             <FunnelPreview funnel={funnel} />
