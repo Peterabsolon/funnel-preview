@@ -9,13 +9,13 @@ import { Logo } from '../Logo'
 
 interface LandingModalProps {
   onClose?: () => void
-  withBackdrop?: boolean
   title?: string
+  forAddNewFunnel?: boolean
 }
 
-export const LandingModal = observer(({ withBackdrop, title, onClose }: LandingModalProps) => {
+export const LandingModal = observer(({ title, onClose, forAddNewFunnel }: LandingModalProps) => {
   return (
-    <Modal withBackdrop={withBackdrop}>
+    <Modal withBackdrop={forAddNewFunnel}>
       <div className="mb-8 flex items-center justify-center">
         {title ? (
           <h1 className="flex-1 text-center text-lg font-medium">{title}</h1>
@@ -39,7 +39,7 @@ export const LandingModal = observer(({ withBackdrop, title, onClose }: LandingM
         className="mb-8"
         label="Drop funnel JSON file here or use the button below to select"
         buttonLabel="Select funnel file"
-        onDropAccepted={app.handleLoadFiles}
+        onDropAccepted={app.handleDropFiles}
       />
 
       <span className="mb-4">Don&apos;t have a file?</span>

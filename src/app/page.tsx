@@ -11,7 +11,7 @@ const SIDEBAR_WIDTH_PX = 460
 
 const App = observer(() => {
   if (!app.funnels.length) {
-    return <LandingModal withBackdrop={false} />
+    return <LandingModal />
   }
 
   return (
@@ -35,7 +35,9 @@ const App = observer(() => {
         {app.funnelOpened && <FunnelPreviewSettings funnel={app.funnelOpened} />}
       </div>
 
-      {app.isLandingModalOpened && <LandingModal title="Add new funnel" onClose={app.handleAbortAddNewFunnel} />}
+      {app.isLandingModalOpened && (
+        <LandingModal forAddNewFunnel title="Add new funnel" onClose={app.handleAbortAddNewFunnel} />
+      )}
     </div>
   )
 })

@@ -7,6 +7,8 @@ import { CodeBracketIcon } from './CodeBracket.icon'
 import { JSONIcon } from './JSON.icon'
 import { PlusIcon } from './Plus.icon'
 import { RestartIcon } from './Restart.icon'
+import { TrashIcon } from './Trash.icon'
+import { ZoomIcon } from './Zoom.icon'
 
 const meta = {
   title: 'Icons',
@@ -28,6 +30,8 @@ const Template = () => {
       <JSONIcon className="w-12" />
       <PlusIcon className={className} />
       <RestartIcon className={className} />
+      <TrashIcon className={className} />
+      <ZoomIcon className={className} />
     </div>
   )
 }

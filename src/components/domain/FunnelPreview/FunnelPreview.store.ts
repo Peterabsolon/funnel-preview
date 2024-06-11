@@ -1,6 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 import { v4 as uuid } from 'uuid'
 
+import type { AppStore } from '~/app/store'
 import { Funnel } from '~/types'
 
 import { FunnelPreviewSettingsStore } from '../FunnelPreviewSettings'
@@ -22,7 +23,7 @@ export class FunnelPreviewStore {
   /**
    * The device shell to render the Funnel in
    */
-  settings = new FunnelPreviewSettingsStore()
+  settings: FunnelPreviewSettingsStore
 
   /**
    * Which Funnel page is being viewed
@@ -32,10 +33,15 @@ export class FunnelPreviewStore {
   // ====================================================
   // Constructor
   // ====================================================
-  constructor(data?: Funnel) {
+  constructor(
+    private readonly app: AppStore,
+    data?: Funnel,
+  ) {
     makeAutoObservable(this)
-    this.data = data
+
     this.id = uuid()
+    this.data = data
+    this.settings = new FunnelPreviewSettingsStore(app)
   }
 
   // ====================================================

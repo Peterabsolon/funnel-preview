@@ -2,7 +2,8 @@ import { observer } from 'mobx-react-lite'
 
 import { app } from '~/app/store'
 import { Dropzone, Range, Select, Toggle } from '~/components/fields'
-import { Card } from '~/components/ui'
+import { TrashIcon, ZoomIcon } from '~/components/icons'
+import { Button, Card } from '~/components/ui'
 
 import { DEVICES } from '../FunnelPreview/FunnelPreview.constants'
 import { FunnelPreviewStore } from '../FunnelPreview/FunnelPreview.store'
@@ -30,7 +31,8 @@ export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettings
         acceptFilesPreset="JSON"
         label="Drop new funnel JSON file here or"
         buttonLabel="Select new funnel file"
-        onDropAccepted={app.handleLoadFiles}
+        maxFiles={1}
+        onDropAccepted={app.handleReplaceOpenedFunnelFile}
       />
 
       <Range
@@ -44,6 +46,15 @@ export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettings
         value={settings.deviceScale}
         onChange={(evt) => settings.setDeviceScale(+evt.target.value)}
       />
+
+      <Button
+        className="mb-6 w-full"
+        variant="secondary"
+        onClick={settings.setDeviceScaleBasedOnViewport}
+        iconLeft={<ZoomIcon className="mr-2 size-4" />}
+      >
+        Set scale automatically
+      </Button>
 
       <Select<DeviceType>
         name="device"
@@ -69,11 +80,22 @@ export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettings
         <>
           <Toggle
             label="Use dark theme"
+            className="mb-6"
             checked={settings.deviceTheme === 'dark'}
             onChange={settings.toggleDarkTheme}
           />
         </>
       )}
+
+      <Button
+        className="w-full"
+        variant="secondary"
+        variantHover="danger"
+        iconLeft={<TrashIcon className="mr-2 size-4" />}
+        onClick={() => app.handleRemoveFunnel(funnel)}
+      >
+        Remove preview
+      </Button>
     </Card>
   )
 })

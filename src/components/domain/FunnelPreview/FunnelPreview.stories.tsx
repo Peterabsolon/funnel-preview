@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { AppStore } from '~/app/store'
 import { Funnel } from '~/types'
 
 import funnelDemo from '../../../../fixtures/demo.funnel.json'
@@ -20,13 +21,15 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
+const app = new AppStore()
+
 export const iPhone14ProDark: Story = {
   args: {
-    funnel: new FunnelPreviewStore(funnelDemo as Funnel),
+    funnel: new FunnelPreviewStore(app, funnelDemo as Funnel),
   },
 }
 
-const funnellPhone14ProLight = new FunnelPreviewStore(funnelDemo as Funnel)
+const funnellPhone14ProLight = new FunnelPreviewStore(app, funnelDemo as Funnel)
 funnellPhone14ProLight.settings.toggleDarkTheme()
 
 export const iPhone14ProLight: Story = {
@@ -35,7 +38,7 @@ export const iPhone14ProLight: Story = {
   },
 }
 
-const funnelAndroidDark = new FunnelPreviewStore(funnelDemo as Funnel)
+const funnelAndroidDark = new FunnelPreviewStore(app, funnelDemo as Funnel)
 funnelAndroidDark.settings.setDevice('Android')
 
 export const AndroidDark: Story = {
@@ -44,7 +47,7 @@ export const AndroidDark: Story = {
   },
 }
 
-const funnelAndroidLight = new FunnelPreviewStore(funnelDemo as Funnel)
+const funnelAndroidLight = new FunnelPreviewStore(app, funnelDemo as Funnel)
 funnelAndroidLight.settings.setDevice('Android')
 funnelAndroidLight.settings.toggleDarkTheme()
 

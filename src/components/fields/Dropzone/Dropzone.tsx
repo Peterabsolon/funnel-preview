@@ -116,7 +116,7 @@ export const Dropzone = observer(
 
             {icon && !iconHidden && icon}
 
-            <p className={cx('mb-12 text-center', classNameLabel)}>
+            <p className={cx('mb-12 w-full text-center', classNameLabel)}>
               {isDragActive ? (isDragAccept ? 'Drop the file here' : 'This file is not supported :(') : label}
             </p>
 

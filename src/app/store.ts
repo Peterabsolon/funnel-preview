@@ -1,9 +1,9 @@
 'use client'
 
-import { makeAutoObservable, observable } from 'mobx'
+import { makeAutoObservable, observable, when } from 'mobx'
 
 import { FunnelPreviewStore } from '~/components'
-import { FunnelSchema } from '~/types'
+import { Funnel, FunnelSchema } from '~/types'
 
 import funnelDemo from '../../fixtures/demo.funnel.json'
 import { PARSING_ERROR_MESSAGES, ParsingError } from './store.constants'
@@ -20,6 +20,12 @@ export class AppStore {
 
   constructor() {
     makeAutoObservable(this)
+
+    /** Account for funnel title being visible with 2+ more devices */
+    when(
+      () => this.funnels.length === 2,
+      () => this.funnels.forEach((funnel) => funnel.settings.setDeviceScaleBasedOnViewport()),
+    )
   }
 
   // ====================================================
@@ -37,16 +43,40 @@ export class AppStore {
   // Private
   // ====================================================
   /**
-   * Parses funnel data and initializes its store.
+   * Parses file into JSON.
    */
-  private createFunnel = (data: AnyObject) => {
-    this.funnels.every((funnel) => funnel.settings.closePanel())
+  private parseFile = async (file: File): Promise<Funnel> => {
+    const text = await file.text()
 
+    let data: AnyObject = {}
     try {
-      const funnelData = FunnelSchema.parse(data)
-      const funnel = new FunnelPreviewStore(funnelData)
-      this.funnels.push(funnel)
-      this.funnelOpened = funnel
+      data = JSON.parse(text)
+    } catch (err) {
+      console.error('Failed to parse JSON file', err)
+      this.parsingError = 'file'
+      throw err
+    }
+
+    let funnelData: Funnel
+    try {
+      funnelData = FunnelSchema.parse(data)
+    } catch (err) {
+      console.error('Failed to parse funnel data', err)
+      this.parsingError = 'schema'
+      throw err
+    }
+
+    return funnelData
+  }
+
+  /**
+   * Creates funnel preview store.
+   */
+  private createFunnel = (funnel: Funnel) => {
+    try {
+      const store = new FunnelPreviewStore(this, funnel)
+      this.funnels.push(store)
+      this.funnelOpened = store
     } catch (err) {
       console.error('Failed to parse funnel data', err)
       this.parsingError = 'schema'
@@ -57,34 +87,50 @@ export class AppStore {
   // Handlers
   // ====================================================
   /**
-   * Loads and parses the JSON file.
+   * Parses the JSON file and initializes the funnel preview store.
    * Dropzone component already ensures we get .json files only.
    */
+  handleLoadFile = async (file: File) => {
+    const data = await this.parseFile(file)
+    this.createFunnel(data)
+  }
+
+  /**
+   * Parses and loads funnel JSON files
+   */
   handleLoadFiles = async (files: File[]) => {
-    if (!this.isLandingModalOpened) {
-      this.handleReset()
-    }
-
     for (const file of files) {
-      const text = await file.text()
+      await this.handleLoadFile(file)
+    }
+  }
 
-      try {
-        const data = JSON.parse(text)
-        this.createFunnel(data as AnyObject)
-      } catch (err) {
-        console.error('Failed to parse JSON file', err)
-        this.parsingError = 'file'
-      }
+  handleLoadMoreFiles = async (files: File[]) => {
+    for (const file of files) {
+      await this.handleLoadFile(file)
+    }
+  }
+
+  handleDropFiles = async (files: File[]) => {
+    if (!this.funnels.length) {
+      await this.handleLoadFiles(files)
+    } else {
+      await this.handleLoadMoreFiles(files)
     }
 
     this.isLandingModalOpened = false
   }
 
+  handleReplaceOpenedFunnelFile = async (files: File[]) => {
+    if (!this.funnelOpened || !files[0]) return
+    const data = await this.parseFile(files[0])
+    this.funnelOpened.setData(data)
+  }
+
   /**
    * Loads the demo funnel file.
    */
-  handleUseDemoFile = () => {
-    this.createFunnel(funnelDemo)
+  handleUseDemoFile = async () => {
+    this.createFunnel(FunnelSchema.parse(funnelDemo))
     this.isLandingModalOpened = false
   }
 
@@ -113,6 +159,13 @@ export class AppStore {
     }
 
     this.funnelOpened = funnel
+  }
+
+  /**
+   * Removes the funnel preview
+   */
+  handleRemoveFunnel = (funnel: FunnelPreviewStore) => {
+    this.funnels.remove(funnel)
   }
 
   /**

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { AppStore } from '~/app/store'
 import { Funnel } from '~/types'
 
 import funnelDemo from '../../../../fixtures/demo.funnel.json'
@@ -20,8 +21,10 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
+const app = new AppStore()
+
 export const Default: Story = {
   args: {
-    funnel: new FunnelPreviewStore(funnelDemo as Funnel),
+    funnel: new FunnelPreviewStore(app, funnelDemo as Funnel),
   },
 }

@@ -1,5 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 
+import type { AppStore } from '~/app/store'
+
 import { DEVICES } from '../FunnelPreview/FunnelPreview.constants'
 import { DeviceTheme, DeviceType } from '../FunnelPreview/FunnelPreview.types'
 import { DEVICE_SCALE_RANGE } from './FunnelPreviewSettings.constants'
@@ -33,7 +35,7 @@ export class FunnelPreviewSettingsStore {
    */
   isDeviceVisible = true
 
-  constructor() {
+  constructor(private readonly app: AppStore) {
     makeAutoObservable(this)
   }
 
@@ -50,8 +52,18 @@ export class FunnelPreviewSettingsStore {
 
   setDeviceScaleBasedOnViewport = () => {
     const { minViewportHeightForFullScale } = DEVICES[this.device]
-    const scale = (window.innerHeight / minViewportHeightForFullScale) * 0.95
-    this.setDeviceScale(Math.max(scale, DEVICE_SCALE_RANGE[0]))
+
+    // figure out how tall is viewport relative to height at which the device can be rendered at full scale
+    const viewportHeightRatio = window.innerHeight / minViewportHeightForFullScale
+
+    // account for funnel preview title that is only rendered with multiple funnels present
+    const scaleAdjustment = this.app.hasManyFunnels ? 0.85 : 0.95
+    const scaleAdjusted = viewportHeightRatio * scaleAdjustment
+
+    // do not scale below the minimum
+    const scaleFinal = Math.max(scaleAdjusted, DEVICE_SCALE_RANGE[0])
+
+    this.setDeviceScale(scaleFinal)
   }
 
   toggleIsDeviceVisible = () => {

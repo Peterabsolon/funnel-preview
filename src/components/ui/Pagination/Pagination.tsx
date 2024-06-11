@@ -31,16 +31,18 @@ export const Pagination = observer(({ className, page, pagesCount, setPage }: Pa
   const isFirstPage = page === 0
   const isLastPage = page === pagesCount - 1
 
-  const onPrevClick = () => {
+  const onPrevClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
     setPage(Math.max(0, page - 1))
   }
 
-  const onNextClick = () => {
+  const onNextClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
     setPage(Math.min(pagesCount - 1, page + 1))
   }
 
   return (
-    <div className={cx('flex w-full items-center justify-between', className)}>
+    <div className={cx('mx-auto flex w-96 items-center justify-between', className)}>
       <Button
         disabled={isFirstPage}
         iconLeft={<ArrowIcon className="mr-1 h-4 w-4" />}

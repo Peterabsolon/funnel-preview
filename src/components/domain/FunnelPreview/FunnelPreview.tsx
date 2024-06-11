@@ -32,6 +32,8 @@ export const FunnelPreview = observer(({ funnel }: FunnelProps) => {
         'cursor-pointer hover:bg-slate-900': hasManyFunnels,
       })}
     >
+      {hasManyFunnels && <h2 className="mb-6 text-center text-xl">{funnel.data?.name}</h2>}
+
       <Pagination className="mb-8" page={page} setPage={setPage} pagesCount={pagesCount} />
 
       {pageContent && (
