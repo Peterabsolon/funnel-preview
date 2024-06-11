@@ -3,7 +3,6 @@
 import cx from 'classnames'
 import { observer } from 'mobx-react-lite'
 
-import { app } from '~/app/store'
 import { Card, Pagination } from '~/components/ui'
 
 import { FunnelPreviewStore } from './FunnelPreview.store'
@@ -16,11 +15,11 @@ export interface FunnelProps {
 }
 
 export const FunnelPreview = observer(({ funnel }: FunnelProps) => {
-  const { page, pageContent, pagesCount, setPage } = funnel
-  const { hasManyFunnels } = app
+  const { app, page, pageContent, pagesCount, setPage } = funnel
+  const { funnelOpened, hasManyFunnels } = app
 
   // only use highlights when we have multiple funnels
-  const isHighlighted = funnel === app.funnelOpened && hasManyFunnels
+  const isHighlighted = funnel === funnelOpened && hasManyFunnels
   const isTransparent = !isHighlighted ?? !hasManyFunnels
 
   return (

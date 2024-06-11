@@ -1,6 +1,5 @@
 import { observer } from 'mobx-react-lite'
 
-import { app } from '~/app/store'
 import { Dropzone, Range, Select, Toggle } from '~/components/fields'
 import { TrashIcon, ZoomIcon } from '~/components/icons'
 import { Alert, Button, Card } from '~/components/ui'
@@ -14,7 +13,7 @@ export interface FunnelPreviewSettingsProps {
 }
 
 export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettingsProps) => {
-  const { settings } = funnel
+  const { settings, app } = funnel
   const { name } = funnel.data || {}
 
   return (
@@ -29,13 +28,13 @@ export const FunnelPreviewSettings = observer(({ funnel }: FunnelPreviewSettings
 
       <Dropzone
         name="file"
+        acceptFilesPreset="JSON"
         className="mb-6"
         classNameLabel="mb-6"
+        buttonLabel="Select new funnel file"
         fieldLabel="JSON file"
         iconHidden
-        acceptFilesPreset="JSON"
         label="Drop new funnel JSON file here or"
-        buttonLabel="Select new funnel file"
         maxFiles={1}
         onDropAccepted={app.handleReplaceOpenedFunnelFile}
       />

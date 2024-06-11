@@ -34,7 +34,7 @@ export class FunnelPreviewStore {
   // Constructor
   // ====================================================
   constructor(
-    private readonly app: AppStore,
+    public readonly app: AppStore,
     data?: Funnel,
   ) {
     makeAutoObservable(this)
